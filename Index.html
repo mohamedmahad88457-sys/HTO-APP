@@ -1,1 +1,6873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#083b2d">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>HOME TEACHING ONLINE - HTO</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7f6;
+    color:#123c31;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#083b2d;
+    color:white;
+    padding:20px 14px;
+    overflow-y:auto;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:5px 8px 22px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+    border:2px solid white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.logo h2{
+    font-size:14px;
+    line-height:1.3;
+}
+
+.logo small{
+    color:#a9c7bd;
+}
+
+.menu-title{
+    color:#8db2a5;
+    font-size:10px;
+    margin:20px 10px 8px;
+    text-transform:uppercase;
+}
+
+.nav{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#dceae6;
+    padding:12px;
+    border-radius:8px;
+    text-align:left;
+    cursor:pointer;
+    margin-bottom:3px;
+    font-size:14px;
+}
+
+.nav:hover,
+.nav.active{
+    background:#126047;
+    color:white;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:70px;
+    background:white;
+    border-bottom:1px solid #e1e8e5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+}
+
+.topbar h1{
+    font-size:21px;
+    color:#083b2d;
+}
+
+.topbar p{
+    color:#8a9792;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile-circle{
+    width:38px;
+    height:38px;
+    background:#0d5a43;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.content{
+    padding:25px;
+}
+
+/* ================= PAGES ================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome{
+    background:linear-gradient(135deg,#083b2d,#0e684c);
+    color:white;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:22px;
+}
+
+.welcome h2{
+    font-size:22px;
+    margin-bottom:7px;
+}
+
+.welcome p{
+    color:#d9eee7;
+    font-size:13px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:22px;
+}
+
+.stat{
+    background:white;
+    border:1px solid #e0e8e4;
+    border-radius:14px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.stat-icon{
+    width:50px;
+    height:50px;
+    background:#e8f4f0;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+    color:#0d5a43;
+}
+
+.stat small{
+    color:#89958f;
+}
+
+.stat strong{
+    display:block;
+    font-size:26px;
+    margin-top:4px;
+}
+
+/* ================= CARDS ================= */
+
+.card{
+    background:white;
+    border:1px solid #e0e8e4;
+    border-radius:14px;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:20px;
+}
+
+.card h3{
+    margin-bottom:18px;
+}
+
+/* ================= QUICK BUTTONS ================= */
+
+.quick{
+    width:100%;
+    border:1px solid #dfe8e4;
+    background:#fbfcfc;
+    padding:17px;
+    border-radius:10px;
+    margin-bottom:12px;
+    text-align:left;
+    cursor:pointer;
+    color:#123c31;
+}
+
+.quick:hover{
+    border-color:#0d5a43;
+    background:#f0f8f5;
+}
+
+.quick strong{
+    display:block;
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.quick span{
+    color:#8a9792;
+    font-size:12px;
+}
+
+/* ================= PAGE HEADER ================= */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.page-header h2{
+    font-size:23px;
+}
+
+.page-header p{
+    color:#89958f;
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+    border:0;
+    padding:11px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.primary{
+    background:#0d5a43;
+    color:white;
+}
+
+.primary:hover{
+    background:#083b2d;
+}
+
+.cancel{
+    background:#edf2f0;
+    color:#31584d;
+}
+
+.danger{
+    background:#fff0f0;
+    color:#c0392b;
+}
+
+.edit{
+    background:#e8f4f0;
+    color:#0d5a43;
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+    width:100%;
+    padding:12px;
+    border:1px solid #dce5e1;
+    border-radius:8px;
+    outline:none;
+    margin-bottom:18px;
+}
+
+.search:focus{
+    border-color:#0d5a43;
+}
+
+/* ================= TABLE ================= */
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#f2f6f4;
+    color:#687771;
+    padding:13px;
+    text-align:left;
+    font-size:12px;
+}
+
+td{
+    padding:13px;
+    border-bottom:1px solid #edf0ef;
+    font-size:13px;
+}
+
+.badge{
+    background:#e7f5ef;
+    color:#0d5a43;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+}
+
+.action-buttons{
+    display:flex;
+    gap:6px;
+}
+
+.action-buttons button{
+    border:0;
+    padding:6px 9px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* ================= MODAL ================= */
+
+#studentModal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.55);
+    z-index:5000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+#studentModal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:550px;
+    background:white;
+    border-radius:15px;
+    padding:24px;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.modal-header h3{
+    color:#083b2d;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#edf2f0;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group.full{
+    grid-column:1 / -1;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:6px;
+    color:#52625c;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #dce5e1;
+    border-radius:8px;
+    outline:none;
+    background:white;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#0d5a43;
+}
+
+.modal-footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    border-top:1px solid #edf0ef;
+    padding-top:16px;
+    margin-top:10px;
+}
+
+/* ================= MODULE ================= */
+
+.module{
+    background:white;
+    border:1px solid #e0e8e4;
+    border-radius:14px;
+    padding:50px 20px;
+    text-align:center;
+}
+
+.module-icon{
+    width:60px;
+    height:60px;
+    background:#e8f4f0;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    color:#0d5a43;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.module p{
+    color:#89958f;
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* ================= MOBILE ================= */
+
+.mobile-button{
+    display:none;
+    border:0;
+    background:#e8f4f0;
+    color:#0d5a43;
+    width:40px;
+    height:40px;
+    border-radius:8px;
+    font-size:20px;
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+        transform:translateX(-100%);
+        transition:.2s;
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-button{
+        display:block;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .content{
+        padding:15px;
+    }
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .profile{
+        display:none;
+    }
+
+    .topbar h1{
+        font-size:17px;
+    }
+
+    .stats{
+        gap:10px;
+    }
+
+    .stat{
+        padding:15px 12px;
+    }
+
+    .stat strong{
+        font-size:22px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .page-header{
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+  <div id="adminLogin" style="
+position:fixed;
+inset:0;
+background:#f5f7fb;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:Arial;
+">
+  <div style="
+  width:90%;
+  max-width:380px;
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 5px 25px rgba(0,0,0,.15);
+  text-align:center;
+  ">
+    <h2>HTO Admin Login</h2>
+    <p>Enter Admin Password</p>
+
+    <input
+      id="adminPassword"
+      type="password"
+      placeholder="Password"
+      style="width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box;"
+    >
+
+    <button onclick="adminLogin()" style="
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    ">
+      Login
+    </button>
+
+    <p id="loginError" style="color:red;"></p>
+  </div>
+</div>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar" id="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            HTO
+        </div>
+
+        <div>
+            <h2>HOME TEACHING<br>ONLINE</h2>
+            <small>Management System</small>
+        </div>
+
+    </div>
+
+    <div class="menu-title">Main</div>
+
+    <button class="nav active" onclick="showPage('dashboard',this)">
+        ▦ &nbsp; Dashboard
+    </button>
+
+    <button class="nav" onclick="showPage('students',this)">
+        ♙ &nbsp; Students
+    </button>
+
+    <button class="nav" onclick="showPage('teachers',this)">
+        ♙ &nbsp; Teachers
+    </button>
+
+    <button class="nav" onclick="showPage('employees',this)">
+        ▣ &nbsp; Employees
+    </button>
+
+    <div class="menu-title">Academic</div>
+
+    <button class="nav" onclick="showPage('courses',this)">
+        ▤ &nbsp; Courses
+    </button>
+
+    <button class="nav" onclick="showPage('classes',this)">
+        ▦ &nbsp; Classes
+    </button>
+
+    <button class="nav" onclick="showPage('attendance',this)">
+        ✓ &nbsp; Attendance
+    </button>
+
+    <button class="nav" onclick="showPage('exams',this)">
+        ▤ &nbsp; Exams & Results
+    </button>
+
+    <div class="menu-title">Finance</div>
+
+    <button class="nav" onclick="showPage('fees',this)">
+        $ &nbsp; Student Fees
+    </button>
+
+    <button class="nav" onclick="showPage('payroll',this)">
+        $ &nbsp; Payroll
+    </button>
+
+    <button class="nav" onclick="showPage('payments',this)">
+        $ &nbsp; Payments
+    </button>
+
+    <div class="menu-title">System</div>
+
+
+
+<button class="nav" onclick="showPage('reports',this)">
+    ▥ &nbsp; Reports
+</button>
+
+<button class="nav" onclick="showPage('print',this)">
+    🖨 &nbsp; Print
+</button>
+
+<button class="nav" onclick="showPage('settings',this)">
+    ⚙ &nbsp; Settings
+</button>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <button class="mobile-button" onclick="toggleSidebar()">
+            ☰
+        </button>
+
+        <div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <p>HOME TEACHING ONLINE • HTO</p>
+        </div>
+
+        <div class="profile">
+            <strong>Administrator</strong>
+
+            <div class="profile-circle">
+                A
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content">
+      
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="page active" id="dashboard">
+
+    <div class="welcome">
+
+        <h2>Welcome to HOME TEACHING ONLINE</h2>
+
+        <p>
+            Management System — manage students,
+            teachers, academic records and finance.
+        </p>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ♙
+            </div>
+
+            <div>
+                <small>Total Students</small>
+                <strong id="dashboardStudents">0</strong>
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ♙
+            </div>
+
+            <div>
+                <small>Teachers</small>
+                <strong id="dashboardTeachers">0</strong>
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ▣
+            </div>
+
+            <div>
+                <small>Employees</small>
+                <strong id="dashboardEmployees">0</strong>
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ▤
+            </div>
+
+            <div>
+                <small>Courses</small>
+                <strong id="dashboardCourses">0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h3>Quick Actions</h3>
+
+            <button
+                class="quick"
+                onclick="openStudent()">
+
+                <strong>+ Add Student</strong>
+
+                <span>
+                    Register a new student
+                </span>
+
+            </button>
+
+            <button
+                class="quick"
+                onclick="showPage('employees')">
+
+                <strong>+ Add Employee</strong>
+
+                <span>
+                    Add employee information
+                </span>
+
+            </button>
+
+            <button
+                class="quick"
+                onclick="showPage('fees')">
+
+                <strong>Record Payment</strong>
+
+                <span>
+                    Record student fee payment
+                </span>
+
+            </button>
+
+            <button
+                class="quick"
+                onclick="showPage('payroll')">
+
+                <strong>Pay Salary</strong>
+
+                <span>
+                    Manage employee salary
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>System Overview</h3>
+
+            <p style="line-height:1.8;color:#78857f;font-size:13px;">
+
+                HOME TEACHING ONLINE management system
+                helps manage students, teachers, employees,
+                courses, attendance, examinations and
+                financial records.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STUDENTS ================= -->
+
+<section class="page" id="students">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Students</h2>
+
+            <p>
+                Manage student registration and information
+            </p>
+
+        </div>
+
+        <button
+            class="btn primary"
+            onclick="openStudent()">
+
+            + Add Student
+
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <input
+            class="search"
+            id="searchBox"
+            type="text"
+            placeholder="Search student..."
+            oninput="searchStudent()">
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Class</th>
+                        <th>Course</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="studentTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TEACHERS ================= -->
+
+<section class="page" id="teachers">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Teachers</h2>
+            <p>Manage teaching staff</p>
+        </div>
+
+    </div>
+
+    <div class="module">
+
+        <div class="module-icon">T</div>
+
+        <h3>Teachers Management</h3>
+
+        <p>
+            Teacher management will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= EMPLOYEES ================= -->
+
+<section class="page" id="employees">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Employees</h2>
+            <p>Manage employees</p>
+        </div>
+
+    </div>
+
+    <div class="module">
+
+        <div class="module-icon">E</div>
+
+        <h3>Employees Management</h3>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:15px;flex-wrap:wrap;">
+
+    <div>
+        <h3 style="margin:0;">Employees List</h3>
+        <p style="margin:6px 0 0;color:#888;">
+            Manage your employees
+        </p>
+    </div>
+
+    <button
+        class="btn btn-primary"
+        onclick="openEmployee()">
+        + Add Employee
+    </button>
+
+</div>
+
+<div style="overflow-x:auto;">
+
+    <table style="width:100%;border-collapse:collapse;">
+
+        <thead>
+            <tr>
+                <th style="padding:12px;text-align:left;">ID</th>
+                <th style="padding:12px;text-align:left;">Name</th>
+                <th style="padding:12px;text-align:left;">Phone</th>
+                <th style="padding:12px;text-align:left;">Position</th>
+                <th style="padding:12px;text-align:left;">Salary</th>
+                <th style="padding:12px;text-align:left;">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="employeeTable">
+        </tbody>
+
+    </table>
+
+</div>
+
+    </div>
+
+</section>
+
+<!-- ================= COURSES ================= -->
+
+<section class="page" id="courses">
+
+<div class="module">
+
+    <div class="page-header">
+        <div>
+            <h3>Courses List</h3>
+            <p>Manage your academic courses</p>
+        </div>
+
+        <button class="btn-primary" onclick="openCourseModal()">
+            + Add Course
+        </button>
+    </div>
+
+    <div style="margin:20px 0;">
+        <input
+            type="text"
+            id="courseSearch"
+            placeholder="Search course..."
+            oninput="searchCourses()"
+            style="width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px;"
+        >
+    </div>
+
+    <div style="overflow-x:auto;">
+        <table class="data-table" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Course Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="coursesTable"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- COURSE MODAL -->
+<div id="courseModal" class="modal">
+
+    <div class="modal-box">
+
+        <h2 id="courseModalTitle">Add Course</h2>
+
+        <form id="courseForm">
+
+            <input
+                type="text"
+                id="courseId"
+                placeholder="Course ID"
+                required
+            >
+
+            <input
+                type="text"
+                id="courseName"
+                placeholder="Course Name"
+                required
+            >
+
+            <div style="display:flex;gap:10px;margin-top:15px;">
+
+                <button type="submit" class="btn-primary">
+                    Save Course
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    onclick="closeCourseModal()"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CLASSES ================= -->
+
+<section class="page" id="classes">
+
+    <div class="page-header">
+        <div>
+            <h2>Classes</h2>
+            <p>Manage classes and batches</p>
+        </div>
+    </div>
+
+    <div class="module">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:15px;
+            margin-bottom:20px;
+        ">
+
+            <h3 style="margin:0;">
+                Classes List
+            </h3>
+
+            <button
+                class="btn-primary"
+                onclick="htoOpenClass()">
+                + Add Class
+            </button>
+
+        </div>
+
+
+        <input
+            type="text"
+            id="htoClassSearch"
+            placeholder="Search class..."
+            oninput="htoSearchClass()"
+            style="
+                width:100%;
+                padding:13px;
+                border:1px solid #ddd;
+                border-radius:10px;
+                box-sizing:border-box;
+                margin-bottom:20px;
+            "
+        >
+
+
+        <div style="overflow-x:auto;">
+
+            <table style="
+                width:100%;
+                border-collapse:collapse;
+                min-width:750px;
+            ">
+
+                <thead>
+
+                    <tr>
+                        <th style="padding:12px;text-align:left;">
+                            Class ID
+                        </th>
+
+                        <th style="padding:12px;text-align:left;">
+                            Class Name
+                        </th>
+
+                        <th style="padding:12px;text-align:left;">
+                            Teacher
+                        </th>
+
+                        <th style="padding:12px;text-align:left;">
+                            Course
+                        </th>
+
+                        <th style="padding:12px;text-align:left;">
+                            Students
+                        </th>
+
+                        <th style="padding:12px;text-align:left;">
+                            Actions
+                        </th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="htoClassList"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- CLASS MODAL -->
+
+    <div
+        id="htoClassModal"
+        style="
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.5);
+            z-index:9999;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        "
+    >
+
+        <div style="
+            background:white;
+            width:100%;
+            max-width:500px;
+            padding:25px;
+            border-radius:16px;
+            box-sizing:border-box;
+        ">
+
+            <h2 id="htoClassTitle">
+                Add Class
+            </h2>
+
+
+            <input
+                id="htoClassId"
+                placeholder="Class ID"
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin:7px 0;
+                    box-sizing:border-box;
+                "
+            >
+
+
+            <input
+                id="htoClassName"
+                placeholder="Class Name"
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin:7px 0;
+                    box-sizing:border-box;
+                "
+            >
+
+
+            <input
+                id="htoClassTeacher"
+                placeholder="Teacher"
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin:7px 0;
+                    box-sizing:border-box;
+                "
+            >
+
+
+            <select
+                id="htoClassCourse"
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin:7px 0;
+                    box-sizing:border-box;
+                "
+            >
+
+                <option>Qur'an Kareem</option>
+                <option>Fiqi</option>
+                <option>Seerah Prophet Muhammad</option>
+                <option>Arabic Language</option>
+                <option>Islamic Region</option>
+
+            </select>
+
+
+            <input
+                id="htoClassStudents"
+                type="number"
+                min="0"
+                placeholder="Students Count"
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin:7px 0;
+                    box-sizing:border-box;
+                "
+            >
+
+
+            <div style="
+                display:flex;
+                gap:10px;
+                margin-top:15px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="htoCloseClass()"
+                    style="
+                        flex:1;
+                        padding:12px;
+                        border:0;
+                        border-radius:8px;
+                    "
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="htoSaveClass()"
+                    class="btn-primary"
+                    style="
+                        flex:1;
+                        padding:12px;
+                        border:0;
+                        border-radius:8px;
+                    "
+                >
+                    Save Class
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CLASSES JAVASCRIPT ================= -->
+
+<script>
+
+let htoClasses =
+    JSON.parse(localStorage.getItem("HTO_classes") || "[]");
+
+let htoEditingClass = -1;
+
+
+function htoOpenClass(){
+
+    htoEditingClass = -1;
+
+    document.getElementById("htoClassTitle").textContent =
+        "Add Class";
+
+    document.getElementById("htoClassId").value = "";
+    document.getElementById("htoClassName").value = "";
+    document.getElementById("htoClassTeacher").value = "";
+    document.getElementById("htoClassStudents").value = "";
+
+    document.getElementById("htoClassCourse").value =
+        "Qur'an Kareem";
+
+    document.getElementById("htoClassModal").style.display =
+        "flex";
+}
+
+
+function htoCloseClass(){
+
+    document.getElementById("htoClassModal").style.display =
+        "none";
+}
+
+
+function htoSaveClass(){
+
+    const id =
+        document.getElementById("htoClassId").value.trim();
+
+    const name =
+        document.getElementById("htoClassName").value.trim();
+
+    const teacher =
+        document.getElementById("htoClassTeacher").value.trim();
+
+    const course =
+        document.getElementById("htoClassCourse").value;
+
+    const students =
+        document.getElementById("htoClassStudents").value || "0";
+
+
+    if(!id || !name || !teacher){
+
+        alert("Please fill Class ID, Class Name and Teacher.");
+
+        return;
+    }
+
+
+    const data = {
+        id:id,
+        name:name,
+        teacher:teacher,
+        course:course,
+        students:students
+    };
+
+
+    if(htoEditingClass === -1){
+
+        htoClasses.push(data);
+
+        alert("Class added successfully.");
+
+    }else{
+
+        htoClasses[htoEditingClass] = data;
+
+        alert("Class updated successfully.");
+
+    }
+
+
+    localStorage.setItem(
+        "HTO_classes",
+        JSON.stringify(htoClasses)
+    );
+
+
+    htoCloseClass();
+
+    htoRenderClasses();
+
+}
+
+
+function htoRenderClasses(list = htoClasses){
+
+    const tbody =
+        document.getElementById("htoClassList");
+
+    if(!tbody) return;
+
+    tbody.innerHTML = "";
+
+
+    if(list.length === 0){
+
+        tbody.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    style="
+                        text-align:center;
+                        padding:30px;
+                        color:#888;
+                    "
+                >
+                    No classes added yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    list.forEach(function(item){
+
+        const index =
+            htoClasses.indexOf(item);
+
+
+        tbody.innerHTML += `
+
+            <tr>
+
+                <td style="padding:12px;">
+                    ${item.id}
+                </td>
+
+                <td style="padding:12px;">
+                    ${item.name}
+                </td>
+
+                <td style="padding:12px;">
+                    ${item.teacher}
+                </td>
+
+                <td style="padding:12px;">
+                    ${item.course}
+                </td>
+
+                <td style="padding:12px;">
+                    ${item.students}
+                </td>
+
+                <td style="padding:12px;">
+
+                    <button
+                        onclick="htoEditClass(${index})"
+                        style="
+                            padding:8px 12px;
+                            border:0;
+                            border-radius:7px;
+                            background:#e7f3ef;
+                            color:#075e4d;
+                        "
+                    >
+                        Edit
+                    </button>
+
+
+                    <button
+                        onclick="htoDeleteClass(${index})"
+                        style="
+                            padding:8px 12px;
+                            border:0;
+                            border-radius:7px;
+                            background:#fdeaea;
+                            color:#b42318;
+                            margin-left:5px;
+                        "
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+        `;
+    });
+
+}
+
+
+function htoEditClass(index){
+
+    const item =
+        htoClasses[index];
+
+    if(!item) return;
+
+    htoEditingClass = index;
+
+    document.getElementById("htoClassTitle").textContent =
+        "Edit Class";
+
+    document.getElementById("htoClassId").value =
+        item.id;
+
+    document.getElementById("htoClassName").value =
+        item.name;
+
+    document.getElementById("htoClassTeacher").value =
+        item.teacher;
+
+    document.getElementById("htoClassCourse").value =
+        item.course;
+
+    document.getElementById("htoClassStudents").value =
+        item.students;
+
+    document.getElementById("htoClassModal").style.display =
+        "flex";
+}
+
+
+function htoDeleteClass(index){
+
+    const item =
+        htoClasses[index];
+
+    if(!item) return;
+
+
+    if(confirm(
+        "Are you sure you want to delete " +
+        item.name +
+        "?"
+    )){
+
+        htoClasses.splice(index,1);
+
+        localStorage.setItem(
+            "HTO_classes",
+            JSON.stringify(htoClasses)
+        );
+
+        htoRenderClasses();
+
+    }
+
+}
+
+
+function htoSearchClass(){
+
+    const value =
+        document.getElementById("htoClassSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        htoClasses.filter(function(item){
+
+            return (
+                item.id.toLowerCase().includes(value) ||
+                item.name.toLowerCase().includes(value) ||
+                item.teacher.toLowerCase().includes(value) ||
+                item.course.toLowerCase().includes(value)
+            );
+
+        });
+
+
+    htoRenderClasses(filtered);
+
+}
+
+
+htoRenderClasses();
+
+</script>
+
+
+
+
+<!-- ================= ATTENDANCE ================= -->
+
+<section class="page" id="attendance">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Attendance</h2>
+            <p>Track student attendance</p>
+        </div>
+
+    </div>
+
+    <div class="module">
+
+        <div class="module-icon">✓</div>
+
+        <h3>Attendance System</h3>
+
+        <p>
+            Attendance management will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= EXAMS ================= -->
+
+<section class="page" id="exams">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Exams & Results</h2>
+            <p>Manage examinations and results</p>
+        </div>
+
+    </div>
+
+    <div class="module">
+
+        <div class="module-icon">EX</div>
+
+        <h3>Exams & Results</h3>
+
+        <p>
+            Exam and result management will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= FEES ================= -->
+
+<section class="page" id="fees">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Student Fees</h2>
+            <p>Manage student payments</p>
+        </div>
+
+    </div>
+
+    <div class="module">
+
+        <div class="module-icon">$</div>
+
+        <h3>Student Fees</h3>
+
+        <p>
+            Fee management will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= PAYROLL ================= -->
+
+<section class="page" id="payroll">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Payroll</h2>
+            <p>Manage employee salaries</p>
+        </div>
+
+    </div>
+
+    <div class="module">
+
+        <div class="module-icon">$</div>
+
+        <h3>Payroll Management</h3>
+
+        <p>
+            Salary management will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= PAYMENTS ================= -->
+<section class="page" id="payments">
+  <div class="page-header">
+    <div>
+      <h2>Payments</h2>
+      <p>Student Payment, Expenses & Net Balance</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;">
+    <div class="module">
+      <div style="color:#666;">Student Payment</div>
+      <h2 id="htoPaymentTotal" style="margin:8px 0;">$0.00</h2>
+      <small>Total Paid from Student Fees</small>
+    </div>
+    <div class="module">
+      <div style="color:#666;">Expenses</div>
+      <h2 id="htoExpenseTotal" style="margin:8px 0;">$0.00</h2>
+      <small>Total Expenses</small>
+    </div>
+    <div class="module">
+      <div style="color:#666;">Net Balance</div>
+      <h2 id="htoPaymentBalance" style="margin:8px 0;">$0.00</h2>
+      <small>Student Payment - Expenses</small>
+    </div>
+  </div>
+
+  <div class="module" style="margin-top:20px;">
+    <h3>Expenses / Qarashaad</h3>
+    <button class="btn-primary" onclick="addSimpleExpense()">+ Add Expense</button>
+    <div id="simpleExpenses" style="margin-top:15px;"></div>
+  </div>
+</section>
+
+
+<!-- ================= REPORTS ================= -->
+
+<section class="page" id="reports">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Reports</h2>
+            <p>View system reports</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= PRINT ================= -->
+<section class="page" id="print">
+  <div class="page-header">
+    <div>
+      <h2>Print</h2>
+      <p>Print college records</p>
+    </div>
+  </div>
+
+  <div class="module">
+    <h3>Print Center</h3>
+    <p>Select what you want to print.</p>
+    <button class="btn-primary" onclick="window.print()">🖨 Print Current Page</button>
+  </div>
+</section>
+
+<!-- ================= SETTINGS ================= -->
+
+<section class="page" id="settings">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Settings</h2>
+            <p>System settings</p>
+        </div>
+
+    </div>
+
+  
+
+        
+
+
+    </div>
+
+</section>
+
+    </div>
+</div>
+
+<!-- ================= ADD STUDENT WINDOW ================= -->
+
+<div id="studentModal">
+
+  x">
+        
+        <div class="modal-header">
+
+            <h3 id="modalTitle">
+                Add New Student
+            </h3>
+
+            <button
+                type="button"
+                class="close"
+                onclick="closeStudent()">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="studentForm">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Student ID</label>
+
+                    <input
+                        id="studentId"
+                        type="text"
+                        placeholder="HTO-004"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Student Name</label>
+
+                    <input
+                        id="studentName"
+                        type="text"
+                        placeholder="Full name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Phone</label>
+
+                    <input
+                        id="studentPhone"
+                        type="tel"
+                        placeholder="Phone number"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Class</label>
+
+                    <select id="studentClass" required>
+
+                        <option value="">
+                            Select Class
+                        </option>
+
+                        <option value="Class 1">
+                            Class 1
+                        </option>
+
+                        <option value="Class 2">
+                            Class 2
+                        </option>
+
+                        <option value="Class 3">
+                            Class 3
+                        </option>
+
+                        <option value="Class 4">
+                            Class 4
+                        </option>
+
+                        <option value="Class 5">
+                            Class 5
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>Course</label>
+
+                    <select id="studentCourse" required>
+
+                        <option value="">
+                            Select Course
+                        </option>
+
+                        <option value="Qur'an Kareem">
+                            Qur'an Kareem
+                        </option>
+
+                        <option value="Fiqi">
+                            Fiqi
+                        </option>
+
+                        <option value="Seerah Prophet Muhammad">
+                            Seerah Prophet Muhammad
+                        </option>
+
+                        <option value="Arabic Language">
+                            Arabic Language
+                        </option>
+
+                        <option value="Islamic Region">
+                            Islamic Region
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn cancel"
+                    onclick="closeStudent()">
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn primary">
+                    Save Student
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+let students = [];
+
+let editingIndex = -1;
+
+
+/* OPEN STUDENT */
+
+function openStudent(){
+
+    const modal =
+        document.getElementById("studentModal");
+
+    if(!modal){
+        alert("Student window not found.");
+        return;
+    }
+
+    editingIndex = -1;
+
+    document.getElementById("modalTitle")
+        .textContent = "Add New Student";
+
+    document.getElementById("studentForm")
+        .reset();
+
+    modal.classList.add("show");
+
+}
+
+
+/* CLOSE STUDENT */
+
+function closeStudent(){
+
+    const modal =
+        document.getElementById("studentModal");
+
+    if(modal){
+        modal.classList.remove("show");
+    }
+
+}
+
+
+/* SHOW PAGE */
+
+function showPage(pageId, button){
+
+    document.querySelectorAll(".page")
+        .forEach(function(page){
+
+            page.classList.remove("active");
+
+        });
+
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if(selectedPage){
+        selectedPage.classList.add("active");
+    }
+
+
+    document.querySelectorAll(".nav")
+        .forEach(function(nav){
+
+            nav.classList.remove("active");
+
+        });
+
+
+    if(button){
+        button.classList.add("active");
+    }
+
+
+    const titles = {
+
+        dashboard:"Dashboard",
+        students:"Students",
+        teachers:"Teachers",
+        employees:"Employees",
+        courses:"Courses",
+        classes:"Classes",
+        attendance:"Attendance",
+        exams:"Exams & Results",
+        fees:"Student Fees",
+        payroll:"Payroll",
+        payments:"Payments",
+        reports:"Reports",
+        settings:"Settings"
+
+    };
+
+
+    document.getElementById("pageTitle")
+        .textContent =
+        titles[pageId] || "HOME TEACHING ONLINE";
+
+
+    document.getElementById("sidebar")
+        .classList.remove("open");
+
+}
+
+
+/* MOBILE SIDEBAR */
+
+function toggleSidebar(){
+
+    document.getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+
+/* SAVE STUDENT */
+
+document.getElementById("studentForm")
+.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const student = {
+
+            id:
+                document.getElementById("studentId")
+                .value.trim(),
+
+            name:
+                document.getElementById("studentName")
+                .value.trim(),
+
+            phone:
+                document.getElementById("studentPhone")
+                .value.trim(),
+
+            className:
+                document.getElementById("studentClass")
+                .value,
+
+            course:
+                document.getElementById("studentCourse")
+                .value,
+
+            status:"Active"
+
+        };
+
+
+        if(
+            !student.id ||
+            !student.name ||
+            !student.phone ||
+            !student.className ||
+            !student.course
+        ){
+
+            alert("Please complete all fields.");
+
+            return;
+
+        }
+
+
+        const wasEditing =
+            editingIndex !== -1;
+
+
+        if(!wasEditing){
+
+            students.push(student);
+
+        }else{
+
+            students[editingIndex] = student;
+
+        }
+
+
+        renderStudents();
+
+        updateDashboardCount();
+
+        closeStudent();
+
+
+        alert(
+            wasEditing
+            ? "Student updated successfully."
+            : "Student added successfully."
+        );
+
+    }
+);
+
+
+/* RENDER STUDENTS */
+
+function renderStudents(list = students){
+
+    const table =
+        document.getElementById("studentTable");
+
+    if(!table){
+        return;
+    }
+
+
+    table.innerHTML = "";
+
+
+    if(list.length === 0){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="7"
+                    style="text-align:center;padding:30px;color:#89958f;">
+                    No students registered yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    list.forEach(function(student,index){
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>${escapeHTML(student.id)}</td>
+
+            <td>
+                <strong>
+                    ${escapeHTML(student.name)}
+                </strong>
+            </td>
+
+            <td>
+                ${escapeHTML(student.phone)}
+            </td>
+
+            <td>
+                ${escapeHTML(student.className)}
+            </td>
+
+            <td>
+                ${escapeHTML(student.course)}
+            </td>
+
+            <td>
+                <span class="badge">
+                    ${escapeHTML(student.status)}
+                </span>
+            </td>
+
+            <td>
+
+                <div class="action-buttons">
+
+                    <button
+                        class="edit"
+                        onclick="editStudent(${index})">
+                        Edit
+                    </button>
+
+                    <button
+                        class="danger"
+                        onclick="deleteStudent(${index})">
+                        Delete
+                    </button>
+
+                </div>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* EDIT STUDENT */
+
+function editStudent(index){
+
+    const student =
+        students[index];
+
+    if(!student){
+        return;
+    }
+
+
+    editingIndex = index;
+
+
+    document.getElementById("modalTitle")
+        .textContent = "Edit Student";
+
+
+    document.getElementById("studentId")
+        .value = student.id;
+
+
+    document.getElementById("studentName")
+        .value = student.name;
+
+
+    document.getElementById("studentPhone")
+        .value = student.phone;
+
+
+    document.getElementById("studentClass")
+        .value = student.className;
+
+
+    document.getElementById("studentCourse")
+        .value = student.course;
+
+
+    document.getElementById("studentModal")
+        .classList.add("show");
+
+}
+
+
+/* DELETE STUDENT */
+
+function deleteStudent(index){
+
+    const student =
+        students[index];
+
+    if(!student){
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete " +
+            student.name +
+            "?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    students.splice(index,1);
+
+    renderStudents();
+
+    updateDashboardCount();
+
+}
+
+
+/* SEARCH STUDENT */
+
+function searchStudent(){
+
+    const search =
+        document.getElementById("searchBox")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        students.filter(function(student){
+
+            return (
+
+                student.id
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                student.name
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                student.phone
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                student.className
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                student.course
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+        });
+
+
+    renderStudents(filtered);
+
+}
+
+
+/* DASHBOARD COUNT */
+
+function updateDashboardCount(){
+
+    const count =
+        107 + students.length;
+
+
+    const dashboard =
+        document.getElementById(
+            "dashboardStudents"
+        );
+
+
+    if(dashboard){
+
+        dashboard.textContent =
+            count;
+
+    }
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+document.getElementById("studentModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === this){
+
+            closeStudent();
+
+        }
+
+    }
+);
+
+
+/* INITIAL LOAD */
+
+renderStudents();
+// SAVE STUDENTS TO LOCAL STORAGE
+function saveStudents(){
+    localStorage.setItem(
+        "HTO_students",
+        JSON.stringify(students)
+    );
+}
+
+// LOAD STUDENTS WHEN PAGE OPENS
+const savedStudents = localStorage.getItem("HTO_students");
+
+if(savedStudents){
+    students = JSON.parse(savedStudents);
+    renderStudents();
+    updateDashboardCount();
+}
+
+// AUTO SAVE WHEN STUDENT IS ADDED OR UPDATED
+document.getElementById("studentForm").addEventListener("submit", function(){
+    setTimeout(function(){
+        saveStudents();
+    }, 100);
+});
+
+// AUTO SAVE WHEN STUDENT IS DELETED
+const oldDeleteStudent = deleteStudent;
+
+deleteStudent = function(index){
+    oldDeleteStudent(index);
+    saveStudents();
+};
+
+/* ================================
+   HTO TEACHERS MANAGEMENT
+   ================================ */
+
+(function(){
+
+    /* TEACHER DATA */
+    let teachers = JSON.parse(
+        localStorage.getItem("HTO_teachers") || "[]"
+    );
+
+    /* SAVE TEACHERS */
+    function saveTeachers(){
+        localStorage.setItem(
+            "HTO_teachers",
+            JSON.stringify(teachers)
+        );
+    }
+
+    /* CREATE TEACHERS PAGE */
+    const main = document.querySelector(".main");
+
+    if(main && !document.getElementById("teachers")){
+
+        const page = document.createElement("div");
+
+        page.className = "page";
+        page.id = "teachers";
+
+        page.innerHTML = `
+            <div class="page-header">
+                <div>
+                    <h2>Teachers</h2>
+                    <p>Manage HOME TEACHING ONLINE teachers</p>
+                </div>
+
+                <button class="btn btn-primary"
+                    onclick="openTeacherModal()">
+                    + Add Teacher
+                </button>
+            </div>
+
+            <div class="card">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    gap:10px;
+                    margin-bottom:20px;
+                    flex-wrap:wrap;
+                ">
+
+                    <h3>Teacher List</h3>
+
+                    <input
+                        type="text"
+                        id="teacherSearch"
+                        placeholder="Search teacher..."
+                        oninput="searchTeachers()"
+                        style="
+                            padding:11px 14px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                            width:240px;
+                            max-width:100%;
+                        "
+                    >
+
+                </div>
+
+                <div style="overflow-x:auto;">
+
+                    <table style="width:100%; border-collapse:collapse;">
+
+                        <thead>
+                            <tr>
+                                <th style="padding:12px;text-align:left;">
+                                    ID
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Name
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Phone
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Course
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="teachersTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        `;
+
+        main.appendChild(page);
+    }
+
+
+    /* TEACHER MODAL */
+    if(!document.getElementById("teacherModal")){
+
+        const modal = document.createElement("div");
+
+        modal.id = "teacherModal";
+
+        modal.style.cssText = `
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.55);
+            z-index:9999;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        `;
+
+        modal.innerHTML = `
+
+            <div style="
+                background:white;
+                width:100%;
+                max-width:500px;
+                border-radius:14px;
+                padding:25px;
+                box-shadow:0 10px 40px rgba(0,0,0,.2);
+            ">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:20px;
+                ">
+
+                    <h2 id="teacherModalTitle">
+                        Add Teacher
+                    </h2>
+
+                    <button
+                        onclick="closeTeacherModal()"
+                        style="
+                            border:none;
+                            background:none;
+                            font-size:25px;
+                            cursor:pointer;
+                        ">
+                        ×
+                    </button>
+
+                </div>
+
+                <form id="teacherForm">
+
+                    <input type="hidden" id="teacherEditIndex" value="-1">
+
+                    <label>Teacher ID</label>
+
+                    <input
+                        id="teacherId"
+                        type="text"
+                        placeholder="Teacher ID"
+                        required
+                        style="
+                            width:100%;
+                            box-sizing:border-box;
+                            padding:12px;
+                            margin:7px 0 15px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                        "
+                    >
+
+                    <label>Teacher Name</label>
+
+                    <input
+                        id="teacherName"
+                        type="text"
+                        placeholder="Teacher Name"
+                        required
+                        style="
+                            width:100%;
+                            box-sizing:border-box;
+                            padding:12px;
+                            margin:7px 0 15px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                        "
+                    >
+
+                    <label>Phone</label>
+
+                    <input
+                        id="teacherPhone"
+                        type="text"
+                        placeholder="Phone Number"
+                        style="
+                            width:100%;
+                            box-sizing:border-box;
+                            padding:12px;
+                            margin:7px 0 15px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                        "
+                    >
+
+                    <label>Course</label>
+
+                    <select
+                        id="teacherCourse"
+                        required
+                        style="
+                            width:100%;
+                            box-sizing:border-box;
+                            padding:12px;
+                            margin:7px 0 20px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                            background:white;
+                        "
+                    >
+
+                        <option value="">
+                            Select Course
+                        </option>
+
+                        <option value="Qur'an Kareem">
+                            Qur'an Kareem
+                        </option>
+
+                        <option value="Fiqi">
+                            Fiqi
+                        </option>
+
+                        <option value="Seerah Prophet Muhammad">
+                            Seerah Prophet Muhammad
+                        </option>
+
+                        <option value="Arabic Language">
+                            Arabic Language
+                        </option>
+
+                        <option value="Islamic Region">
+                            Islamic Region
+                        </option>
+
+                    </select>
+
+                    <div style="
+                        display:flex;
+                        gap:10px;
+                        justify-content:flex-end;
+                    ">
+
+                        <button
+                            type="button"
+                            onclick="closeTeacherModal()"
+                            style="
+                                padding:11px 18px;
+                                border:1px solid #ddd;
+                                background:white;
+                                border-radius:8px;
+                                cursor:pointer;
+                            ">
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            style="
+                                padding:11px 18px;
+                            ">
+                            Save Teacher
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+    }
+
+
+    /* OPEN MODAL */
+    window.openTeacherModal = function(index = -1){
+
+        const modal = document.getElementById("teacherModal");
+        const form = document.getElementById("teacherForm");
+
+        form.reset();
+
+        document.getElementById("teacherEditIndex").value = index;
+
+        if(index === -1){
+
+            document.getElementById("teacherModalTitle").textContent =
+                "Add Teacher";
+
+        }else{
+
+            const teacher = teachers[index];
+
+            document.getElementById("teacherModalTitle").textContent =
+                "Edit Teacher";
+
+            document.getElementById("teacherId").value =
+                teacher.id || "";
+
+            document.getElementById("teacherName").value =
+                teacher.name || "";
+
+            document.getElementById("teacherPhone").value =
+                teacher.phone || "";
+
+            document.getElementById("teacherCourse").value =
+                teacher.course || "";
+        }
+
+        modal.style.display = "flex";
+    };
+
+
+    /* CLOSE MODAL */
+    window.closeTeacherModal = function(){
+
+        const modal = document.getElementById("teacherModal");
+
+        if(modal){
+            modal.style.display = "none";
+        }
+    };
+
+
+    /* SAVE / UPDATE TEACHER */
+    document.getElementById("teacherForm")
+        .addEventListener("submit", function(e){
+
+            e.preventDefault();
+
+            const index = Number(
+                document.getElementById("teacherEditIndex").value
+            );
+
+            const teacher = {
+
+                id: document.getElementById("teacherId").value.trim(),
+
+                name: document.getElementById("teacherName").value.trim(),
+
+                phone: document.getElementById("teacherPhone").value.trim(),
+
+                course: document.getElementById("teacherCourse").value
+            };
+
+
+            if(index === -1){
+
+                teachers.push(teacher);
+
+                alert("Teacher added successfully.");
+
+            }else{
+
+                teachers[index] = teacher;
+
+                alert("Teacher updated successfully.");
+            }
+
+
+            saveTeachers();
+
+            renderTeachers();
+
+            updateTeacherDashboard();
+
+            closeTeacherModal();
+
+        });
+
+
+    /* DISPLAY TEACHERS */
+    window.renderTeachers = function(list = teachers){
+
+        const tbody =
+            document.getElementById("teachersTableBody");
+
+        if(!tbody) return;
+
+        tbody.innerHTML = "";
+
+
+        if(list.length === 0){
+
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5"
+                        style="
+                            text-align:center;
+                            padding:25px;
+                            color:#777;
+                        ">
+                        No teachers found
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        list.forEach(function(teacher, index){
+
+            tbody.innerHTML += `
+
+                <tr>
+
+                    <td style="padding:12px;border-top:1px solid #eee;">
+                        ${escapeTeacher(teacher.id)}
+                    </td>
+
+                    <td style="padding:12px;border-top:1px solid #eee;">
+                        <strong>
+                            ${escapeTeacher(teacher.name)}
+                        </strong>
+                    </td>
+
+                    <td style="padding:12px;border-top:1px solid #eee;">
+                        ${escapeTeacher(teacher.phone)}
+                    </td>
+
+                    <td style="padding:12px;border-top:1px solid #eee;">
+                        ${escapeTeacher(teacher.course)}
+                    </td>
+
+                    <td style="padding:12px;border-top:1px solid #eee;">
+
+                        <button
+                            onclick="editTeacher(${index})"
+                            style="
+                                padding:7px 10px;
+                                border:1px solid #ddd;
+                                background:white;
+                                border-radius:6px;
+                                cursor:pointer;
+                            ">
+                            Edit
+                        </button>
+
+                        <button
+                            onclick="deleteTeacher(${index})"
+                            style="
+                                padding:7px 10px;
+                                border:none;
+                                background:#dc3545;
+                                color:white;
+                                border-radius:6px;
+                                cursor:pointer;
+                                margin-left:5px;
+                            ">
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+            `;
+        });
+    };
+
+
+    /* EDIT */
+    window.editTeacher = function(index){
+
+        openTeacherModal(index);
+    };
+
+
+    /* DELETE */
+    window.deleteTeacher = function(index){
+
+        if(confirm("Are you sure you want to delete this teacher?")){
+
+            teachers.splice(index, 1);
+
+            saveTeachers();
+
+            renderTeachers();
+
+            updateTeacherDashboard();
+        }
+    };
+
+
+    /* SEARCH */
+    window.searchTeachers = function(){
+
+        const search =
+            document.getElementById("teacherSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+        const filtered = teachers.filter(function(teacher){
+
+            return (
+
+                (teacher.id || "").toLowerCase().includes(search) ||
+
+                (teacher.name || "").toLowerCase().includes(search) ||
+
+                (teacher.phone || "").toLowerCase().includes(search) ||
+
+                (teacher.course || "").toLowerCase().includes(search)
+
+            );
+
+        });
+
+
+        renderTeachers(filtered);
+    };
+
+
+    /* UPDATE DASHBOARD */
+    function updateTeacherDashboard(){
+
+        const dashboardTeacher =
+            document.getElementById("dashboardTeachers");
+
+        if(dashboardTeacher){
+
+            dashboardTeacher.textContent =
+                3 + teachers.length;
+        }
+    }
+
+
+    /* SAFE TEXT */
+    function escapeTeacher(value){
+
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* INITIAL DISPLAY */
+    renderTeachers();
+
+    updateTeacherDashboard();
+
+})();
+
+/* =========================================
+   HTO TEACHERS - FINAL VERSION
+   ========================================= */
+
+(function(){
+
+    let teacherData = JSON.parse(
+        localStorage.getItem("HTO_teachers_final") || "[]"
+    );
+
+    let teacherEditIndex = -1;
+
+
+    function saveTeacherData(){
+        localStorage.setItem(
+            "HTO_teachers_final",
+            JSON.stringify(teacherData)
+        );
+    }
+
+
+    /* REPLACE OLD TEACHERS PAGE */
+
+    const teachersPage = document.getElementById("teachers");
+
+    if(teachersPage){
+
+        teachersPage.innerHTML = `
+
+            <div class="page-header">
+
+                <div>
+                    <h2>Teachers</h2>
+                    <p>Manage teaching staff</p>
+                </div>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="HTO_OpenTeacher()">
+                    + Add Teacher
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    gap:12px;
+                    flex-wrap:wrap;
+                    margin-bottom:20px;
+                ">
+
+                    <h3>Teachers List</h3>
+
+                    <input
+                        type="text"
+                        id="HTO_TeacherSearch"
+                        placeholder="Search teacher..."
+                        oninput="HTO_SearchTeacher()"
+                        style="
+                            padding:11px 14px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                            width:230px;
+                            max-width:100%;
+                            box-sizing:border-box;
+                        "
+                    >
+
+                </div>
+
+
+                <div style="overflow-x:auto;">
+
+                    <table style="
+                        width:100%;
+                        border-collapse:collapse;
+                    ">
+
+                        <thead>
+
+                            <tr>
+
+                                <th style="padding:12px;text-align:left;">
+                                    ID
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Name
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Phone
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Course
+                                </th>
+
+                                <th style="padding:12px;text-align:left;">
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="HTO_TeacherTable">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        `;
+
+
+        /* TEACHER MODAL */
+
+        if(!document.getElementById("HTO_TeacherModal")){
+
+            const modal = document.createElement("div");
+
+            modal.id = "HTO_TeacherModal";
+
+            modal.style.cssText = `
+                display:none;
+                position:fixed;
+                inset:0;
+                background:rgba(0,0,0,.55);
+                z-index:99999;
+                align-items:center;
+                justify-content:center;
+                padding:20px;
+            `;
+
+            modal.innerHTML = `
+
+                <div style="
+                    background:white;
+                    width:100%;
+                    max-width:500px;
+                    border-radius:14px;
+                    padding:25px;
+                    box-sizing:border-box;
+                ">
+
+                    <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        margin-bottom:20px;
+                    ">
+
+                        <h2 id="HTO_TeacherTitle">
+                            Add Teacher
+                        </h2>
+
+                        <button
+                            onclick="HTO_CloseTeacher()"
+                            style="
+                                border:none;
+                                background:none;
+                                font-size:28px;
+                                cursor:pointer;
+                            ">
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <form id="HTO_TeacherForm">
+
+                        <input
+                            type="hidden"
+                            id="HTO_TeacherIndex"
+                            value="-1"
+                        >
+
+
+                        <label>Teacher ID</label>
+
+                        <input
+                            id="HTO_TeacherID"
+                            type="text"
+                            placeholder="Teacher ID"
+                            required
+                            style="
+                                width:100%;
+                                padding:12px;
+                                margin:7px 0 15px;
+                                box-sizing:border-box;
+                                border:1px solid #ddd;
+                                border-radius:8px;
+                            "
+                        >
+
+
+                        <label>Teacher Name</label>
+
+                        <input
+                            id="HTO_TeacherName"
+                            type="text"
+                            placeholder="Teacher Name"
+                            required
+                            style="
+                                width:100%;
+                                padding:12px;
+                                margin:7px 0 15px;
+                                box-sizing:border-box;
+                                border:1px solid #ddd;
+                                border-radius:8px;
+                            "
+                        >
+
+
+                        <label>Phone</label>
+
+                        <input
+                            id="HTO_TeacherPhone"
+                            type="text"
+                            placeholder="Phone Number"
+                            style="
+                                width:100%;
+                                padding:12px;
+                                margin:7px 0 15px;
+                                box-sizing:border-box;
+                                border:1px solid #ddd;
+                                border-radius:8px;
+                            "
+                        >
+
+
+                        <label>Course</label>
+
+                        <select
+                            id="HTO_TeacherCourse"
+                            required
+                            style="
+                                width:100%;
+                                padding:12px;
+                                margin:7px 0 20px;
+                                box-sizing:border-box;
+                                border:1px solid #ddd;
+                                border-radius:8px;
+                                background:white;
+                            "
+                        >
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                            <option value="Qur'an Kareem">
+                                Qur'an Kareem
+                            </option>
+
+                            <option value="Fiqi">
+                                Fiqi
+                            </option>
+
+                            <option value="Seerah Prophet Muhammad">
+                                Seerah Prophet Muhammad
+                            </option>
+
+                            <option value="Arabic Language">
+                                Arabic Language
+                            </option>
+
+                            <option value="Islamic Region">
+                                Islamic Region
+                            </option>
+
+                        </select>
+
+
+                        <div style="
+                            display:flex;
+                            justify-content:flex-end;
+                            gap:10px;
+                        ">
+
+                            <button
+                                type="button"
+                                onclick="HTO_CloseTeacher()"
+                                style="
+                                    padding:11px 18px;
+                                    border:1px solid #ddd;
+                                    background:white;
+                                    border-radius:8px;
+                                ">
+                                Cancel
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                style="
+                                    padding:11px 18px;
+                                ">
+                                Save Teacher
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+
+
+        /* OPEN */
+
+        window.HTO_OpenTeacher = function(index = -1){
+
+            teacherEditIndex = index;
+
+            const form =
+                document.getElementById("HTO_TeacherForm");
+
+            form.reset();
+
+            document.getElementById(
+                "HTO_TeacherIndex"
+            ).value = index;
+
+
+            if(index === -1){
+
+                document.getElementById(
+                    "HTO_TeacherTitle"
+                ).textContent = "Add Teacher";
+
+            }else{
+
+                const t = teacherData[index];
+
+                document.getElementById(
+                    "HTO_TeacherTitle"
+                ).textContent = "Edit Teacher";
+
+                document.getElementById(
+                    "HTO_TeacherID"
+                ).value = t.id || "";
+
+                document.getElementById(
+                    "HTO_TeacherName"
+                ).value = t.name || "";
+
+                document.getElementById(
+                    "HTO_TeacherPhone"
+                ).value = t.phone || "";
+
+                document.getElementById(
+                    "HTO_TeacherCourse"
+                ).value = t.course || "";
+            }
+
+
+            document.getElementById(
+                "HTO_TeacherModal"
+            ).style.display = "flex";
+        };
+
+
+        /* CLOSE */
+
+        window.HTO_CloseTeacher = function(){
+
+            document.getElementById(
+                "HTO_TeacherModal"
+            ).style.display = "none";
+        };
+
+
+        /* SAVE */
+
+        document.getElementById(
+            "HTO_TeacherForm"
+        ).addEventListener("submit", function(e){
+
+            e.preventDefault();
+
+
+            const teacher = {
+
+                id: document.getElementById(
+                    "HTO_TeacherID"
+                ).value.trim(),
+
+                name: document.getElementById(
+                    "HTO_TeacherName"
+                ).value.trim(),
+
+                phone: document.getElementById(
+                    "HTO_TeacherPhone"
+                ).value.trim(),
+
+                course: document.getElementById(
+                    "HTO_TeacherCourse"
+                ).value
+
+            };
+
+
+            if(teacherEditIndex === -1){
+
+                teacherData.push(teacher);
+
+                alert("Teacher added successfully.");
+
+            }else{
+
+                teacherData[teacherEditIndex] = teacher;
+
+                alert("Teacher updated successfully.");
+            }
+
+
+            saveTeacherData();
+
+            HTO_RenderTeachers();
+
+            HTO_UpdateTeacherCount();
+
+            HTO_CloseTeacher();
+
+        });
+
+
+        /* DISPLAY */
+
+        window.HTO_RenderTeachers = function(list = teacherData){
+
+            const table =
+                document.getElementById(
+                    "HTO_TeacherTable"
+                );
+
+            if(!table) return;
+
+            table.innerHTML = "";
+
+
+            if(list.length === 0){
+
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="5"
+                            style="
+                                text-align:center;
+                                padding:30px;
+                                color:#888;
+                            ">
+                            No teachers added yet
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            list.forEach(function(t, index){
+
+                table.innerHTML += `
+
+                    <tr>
+
+                        <td style="
+                            padding:12px;
+                            border-top:1px solid #eee;
+                        ">
+                            ${HTO_Escape(t.id)}
+                        </td>
+
+
+                        <td style="
+                            padding:12px;
+                            border-top:1px solid #eee;
+                        ">
+                            <strong>
+                                ${HTO_Escape(t.name)}
+                            </strong>
+                        </td>
+
+
+                        <td style="
+                            padding:12px;
+                            border-top:1px solid #eee;
+                        ">
+                            ${HTO_Escape(t.phone)}
+                        </td>
+
+
+                        <td style="
+                            padding:12px;
+                            border-top:1px solid #eee;
+                        ">
+                            ${HTO_Escape(t.course)}
+                        </td>
+
+
+                        <td style="
+                            padding:12px;
+                            border-top:1px solid #eee;
+                        ">
+
+                            <button
+                                onclick="HTO_EditTeacher(${index})"
+                                style="
+                                    padding:7px 11px;
+                                    border:1px solid #ddd;
+                                    background:white;
+                                    border-radius:6px;
+                                ">
+                                Edit
+                            </button>
+
+
+                            <button
+                                onclick="HTO_DeleteTeacher(${index})"
+                                style="
+                                    padding:7px 11px;
+                                    margin-left:5px;
+                                    border:none;
+                                    background:#dc3545;
+                                    color:white;
+                                    border-radius:6px;
+                                ">
+                                Delete
+                            </button>
+
+                        </td>
+
+                    </tr>
+                `;
+            });
+        };
+
+
+        /* EDIT */
+
+        window.HTO_EditTeacher = function(index){
+
+            HTO_OpenTeacher(index);
+        };
+
+
+        /* DELETE */
+
+        window.HTO_DeleteTeacher = function(index){
+
+            if(confirm(
+                "Are you sure you want to delete this teacher?"
+            )){
+
+                teacherData.splice(index,1);
+
+                saveTeacherData();
+
+                HTO_RenderTeachers();
+
+                HTO_UpdateTeacherCount();
+            }
+        };
+
+
+        /* SEARCH */
+
+        window.HTO_SearchTeacher = function(){
+
+            const value =
+                document.getElementById(
+                    "HTO_TeacherSearch"
+                ).value
+                .toLowerCase()
+                .trim();
+
+
+            const filtered = teacherData.filter(function(t){
+
+                return (
+
+                    (t.id || "")
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    (t.name || "")
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    (t.phone || "")
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    (t.course || "")
+                    .toLowerCase()
+                    .includes(value)
+
+                );
+            });
+
+
+            HTO_RenderTeachers(filtered);
+        };
+
+
+        /* DASHBOARD COUNT */
+
+        function HTO_UpdateTeacherCount(){
+
+            const box =
+                document.getElementById(
+                    "dashboardTeachers"
+                );
+
+            if(box){
+
+                box.textContent =
+                    3 + teacherData.length;
+            }
+        }
+
+
+        /* ESCAPE TEXT */
+
+        function HTO_Escape(value){
+
+            return String(value || "")
+                .replace(/&/g,"&amp;")
+                .replace(/</g,"&lt;")
+                .replace(/>/g,"&gt;")
+                .replace(/"/g,"&quot;")
+                .replace(/'/g,"&#039;");
+        }
+
+
+        HTO_RenderTeachers();
+
+        HTO_UpdateTeacherCount();
+
+    }
+
+})();
+
+/* ===== HTO EMPLOYEE FUNCTIONS ===== */
+
+window.HTOemployees =
+    JSON.parse(localStorage.getItem("HTO_employees") || "[]");
+
+window.HTOemployeeEditIndex = -1;
+
+
+/* ADD EMPLOYEE BUTTON */
+
+window.openEmployee = function(index = -1) {
+
+    window.HTOemployeeEditIndex = index;
+
+    let oldModal = document.getElementById("HTO_employee_modal");
+
+    if (oldModal) {
+        oldModal.remove();
+    }
+
+    const employee =
+        index >= 0
+        ? window.HTOemployees[index]
+        : {
+            id: "",
+            name: "",
+            phone: "",
+            position: "",
+            salary: ""
+        };
+
+    const modal = document.createElement("div");
+
+    modal.id = "HTO_employee_modal";
+
+    modal.style.cssText = `
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.55);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        z-index:99999;
+        padding:20px;
+    `;
+
+    modal.innerHTML = `
+
+        <div style="
+            background:white;
+            width:100%;
+            max-width:480px;
+            padding:25px;
+            border-radius:15px;
+            box-sizing:border-box;
+        ">
+
+            <h2 style="
+                margin-top:0;
+                color:#064e3b;
+            ">
+                ${index >= 0 ? "Edit Employee" : "Add Employee"}
+            </h2>
+
+            <form id="HTO_employee_form">
+
+                <label>Employee ID</label>
+
+                <input
+                    id="HTO_emp_id"
+                    type="text"
+                    value="${employee.id || ""}"
+                    placeholder="Employee ID"
+                    required
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:7px 0 15px;
+                        box-sizing:border-box;
+                    "
+                >
+
+
+                <label>Employee Name</label>
+
+                <input
+                    id="HTO_emp_name"
+                    type="text"
+                    value="${employee.name || ""}"
+                    placeholder="Employee Name"
+                    required
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:7px 0 15px;
+                        box-sizing:border-box;
+                    "
+                >
+
+
+                <label>Phone</label>
+
+                <input
+                    id="HTO_emp_phone"
+                    type="text"
+                    value="${employee.phone || ""}"
+                    placeholder="Phone Number"
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:7px 0 15px;
+                        box-sizing:border-box;
+                    "
+                >
+
+
+                <label>Position</label>
+
+                <input
+                    id="HTO_emp_position"
+                    type="text"
+                    value="${employee.position || ""}"
+                    placeholder="Position / Job"
+                    required
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:7px 0 15px;
+                        box-sizing:border-box;
+                    "
+                >
+
+
+                <label>Monthly Salary</label>
+
+                <input
+                    id="HTO_emp_salary"
+                    type="number"
+                    value="${employee.salary || ""}"
+                    placeholder="Monthly Salary"
+                    min="0"
+                    required
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:7px 0 20px;
+                        box-sizing:border-box;
+                    "
+                >
+
+
+                <div style="
+                    display:flex;
+                    justify-content:flex-end;
+                    gap:10px;
+                ">
+
+                    <button
+                        type="button"
+                        onclick="closeEmployee()"
+                        style="
+                            padding:11px 18px;
+                            border:1px solid #ddd;
+                            background:white;
+                            border-radius:8px;
+                        ">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="
+                            padding:11px 18px;
+                        ">
+                        Save Employee
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+
+    document.getElementById("HTO_employee_form")
+    .addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const newEmployee = {
+
+            id: document.getElementById("HTO_emp_id").value.trim(),
+
+            name: document.getElementById("HTO_emp_name").value.trim(),
+
+            phone: document.getElementById("HTO_emp_phone").value.trim(),
+
+            position: document.getElementById("HTO_emp_position").value.trim(),
+
+            salary: document.getElementById("HTO_emp_salary").value.trim()
+
+        };
+
+
+        if (window.HTOemployeeEditIndex === -1) {
+
+            window.HTOemployees.push(newEmployee);
+
+            alert("Employee added successfully.");
+
+        } else {
+
+            window.HTOemployees[
+                window.HTOemployeeEditIndex
+            ] = newEmployee;
+
+            alert("Employee updated successfully.");
+        }
+
+
+        localStorage.setItem(
+            "HTO_employees",
+            JSON.stringify(window.HTOemployees)
+        );
+
+
+        window.HTOrenderEmployees();
+
+        window.closeEmployee();
+
+    });
+
+};
+
+
+/* CLOSE */
+
+window.closeEmployee = function() {
+
+    const modal =
+        document.getElementById("HTO_employee_modal");
+
+    if (modal) {
+        modal.remove();
+    }
+
+};
+
+
+/* DELETE */
+
+window.HTOdeleteEmployee = function(index) {
+
+    const employee =
+        window.HTOemployees[index];
+
+    if (!employee) return;
+
+
+    if (
+        confirm(
+            "Delete " + employee.name + "?"
+        )
+    ) {
+
+        window.HTOemployees.splice(index, 1);
+
+        localStorage.setItem(
+            "HTO_employees",
+            JSON.stringify(window.HTOemployees)
+        );
+
+        window.HTOrenderEmployees();
+
+    }
+
+};
+
+
+/* EDIT */
+
+window.HTOeditEmployee = function(index) {
+
+    window.openEmployee(index);
+
+};
+
+
+/* RENDER EMPLOYEES */
+
+window.HTOrenderEmployees = function(list) {
+
+    const table =
+        document.getElementById("employeeTable");
+
+    if (!table) return;
+
+
+    const data =
+        Array.isArray(list)
+        ? list
+        : window.HTOemployees;
+
+
+    table.innerHTML = "";
+
+
+    if (data.length === 0) {
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6"
+                    style="
+                        text-align:center;
+                        padding:30px;
+                        color:#888;
+                    ">
+                    No employees added yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    data.forEach(function(employee) {
+
+        const originalIndex =
+            window.HTOemployees.indexOf(employee);
+
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td style="padding:12px;border-top:1px solid #eee;">
+                    ${employee.id}
+                </td>
+
+                <td style="padding:12px;border-top:1px solid #eee;">
+                    <strong>${employee.name}</strong>
+                </td>
+
+                <td style="padding:12px;border-top:1px solid #eee;">
+                    ${employee.phone}
+                </td>
+
+                <td style="padding:12px;border-top:1px solid #eee;">
+                    ${employee.position}
+                </td>
+
+                <td style="padding:12px;border-top:1px solid #eee;">
+                    $${employee.salary}
+                </td>
+
+                <td style="
+                    padding:12px;
+                    border-top:1px solid #eee;
+                    white-space:nowrap;
+                ">
+
+                    <button
+                        onclick="HTOeditEmployee(${originalIndex})"
+                        style="
+                            padding:7px 10px;
+                            border:1px solid #ccc;
+                            background:white;
+                            border-radius:6px;
+                        ">
+                        Edit
+                    </button>
+
+                    <button
+                        onclick="HTOdeleteEmployee(${originalIndex})"
+                        style="
+                            padding:7px 10px;
+                            border:none;
+                            background:#dc3545;
+                            color:white;
+                            border-radius:6px;
+                            margin-left:5px;
+                        ">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+        `;
+    });
+
+};
+
+
+/* SEARCH */
+
+window.HTOsearchEmployee = function() {
+
+    const input =
+        document.getElementById("HTO_employee_search");
+
+    if (!input) return;
+
+
+    const value =
+        input.value.toLowerCase().trim();
+
+
+    const filtered =
+        window.HTOemployees.filter(function(employee) {
+
+            return (
+
+                employee.id.toLowerCase().includes(value) ||
+
+                employee.name.toLowerCase().includes(value) ||
+
+                employee.phone.toLowerCase().includes(value) ||
+
+                employee.position.toLowerCase().includes(value)
+
+            );
+
+        });
+
+
+    window.HTOrenderEmployees(filtered);
+
+};
+
+
+/* ADD SEARCH BOX */
+
+const employeeTable =
+    document.getElementById("employeeTable");
+
+if (employeeTable) {
+
+    const card =
+        employeeTable.closest(".card");
+
+    if (card) {
+
+        const search =
+            document.createElement("input");
+
+        search.id =
+            "HTO_employee_search";
+
+        search.placeholder =
+            "Search employee...";
+
+        search.oninput =
+            window.HTOsearchEmployee;
+
+        search.style.cssText = `
+            width:100%;
+            max-width:250px;
+            padding:11px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            box-sizing:border-box;
+        `;
+
+        employeeTable.parentElement
+            .parentElement
+            .insertBefore(
+                search,
+                employeeTable.parentElement
+            );
+
+    }
+
+}
+
+
+/* INITIAL LOAD */
+
+window.HTOrenderEmployees();
+
+/* ================= COURSES MANAGEMENT ================= */
+
+let htoCourses = JSON.parse(
+    localStorage.getItem("HTO_courses")
+) || [
+    {
+        id: "C001",
+        name: "Qur'an Kareem"
+    },
+    {
+        id: "C002",
+        name: "Fiqi"
+    },
+    {
+        id: "C003",
+        name: "Seerah Prophet Muhammad"
+    },
+    {
+        id: "C004",
+        name: "Arabic Language"
+    },
+    {
+        id: "C005",
+        name: "Islamic Region"
+    }
+];
+
+let editingCourseIndex = -1;
+
+function saveCourses(){
+
+    localStorage.setItem(
+        "HTO_courses",
+        JSON.stringify(htoCourses)
+    );
+
+}
+
+function renderCourses(list = htoCourses){
+
+    const table = document.getElementById("coursesTable");
+
+    if(!table) return;
+
+    table.innerHTML = "";
+
+    list.forEach(function(course, index){
+
+        table.innerHTML += `
+            <tr>
+
+                <td>${course.id}</td>
+
+                <td>${course.name}</td>
+
+                <td>
+
+                    <button
+                        class="btn-secondary"
+                        onclick="editCourse(${index})">
+                        Edit
+                    </button>
+
+                    <button
+                        class="btn-danger"
+                        onclick="deleteCourse(${index})">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+        `;
+
+    });
+
+    updateCourseCount();
+
+}
+
+function openCourseModal(){
+
+    editingCourseIndex = -1;
+
+    document.getElementById("courseModalTitle").textContent =
+        "Add Course";
+
+    document.getElementById("courseId").value = "";
+
+    document.getElementById("courseName").value = "";
+
+    document.getElementById("courseModal").style.display = "flex";
+
+}
+
+function closeCourseModal(){
+
+    document.getElementById("courseModal").style.display = "none";
+
+}
+
+document.getElementById("courseForm").addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+        const id =
+            document.getElementById("courseId").value.trim();
+
+        const name =
+            document.getElementById("courseName").value.trim();
+
+        if(!id || !name){
+
+            alert("Please fill all fields.");
+
+            return;
+
+        }
+
+        if(editingCourseIndex === -1){
+
+            htoCourses.push({
+                id: id,
+                name: name
+            });
+
+            alert("Course added successfully.");
+
+        }else{
+
+            htoCourses[editingCourseIndex] = {
+                id: id,
+                name: name
+            };
+
+            alert("Course updated successfully.");
+
+        }
+
+        saveCourses();
+
+        renderCourses();
+
+        closeCourseModal();
+
+    }
+);
+
+function editCourse(index){
+
+    editingCourseIndex = index;
+
+    const course = htoCourses[index];
+
+    document.getElementById("courseModalTitle").textContent =
+        "Edit Course";
+
+    document.getElementById("courseId").value =
+        course.id;
+
+    document.getElementById("courseName").value =
+        course.name;
+
+    document.getElementById("courseModal").style.display =
+        "flex";
+
+}
+
+function deleteCourse(index){
+
+    const course = htoCourses[index];
+
+    if(confirm(
+        "Are you sure you want to delete " +
+        course.name +
+        "?"
+    )){
+
+        htoCourses.splice(index, 1);
+
+        saveCourses();
+
+        renderCourses();
+
+    }
+
+}
+
+function searchCourses(){
+
+    const value =
+        document.getElementById("courseSearch")
+        .value
+        .toLowerCase();
+
+    const filtered =
+        htoCourses.filter(function(course){
+
+            return (
+                course.id.toLowerCase().includes(value) ||
+                course.name.toLowerCase().includes(value)
+            );
+
+        });
+
+    renderCourses(filtered);
+
+}
+
+function updateCourseCount(){
+
+    const dashboardCourses =
+        document.getElementById("dashboardCourses");
+
+    if(dashboardCourses){
+
+        dashboardCourses.textContent =
+            htoCourses.length;
+
+    }
+
+}
+
+renderCourses();
+</script>
+
+<!-- ================= HTO ATTENDANCE ================= -->
+<script>
+(function(){
+
+function students(){
+  try{
+    return JSON.parse(localStorage.getItem("HTO_students")||"[]");
+  }catch(e){return[];}
+}
+
+function attendance(){
+  try{
+    return JSON.parse(localStorage.getItem("HTO_attendance")||"{}");
+  }catch(e){return{};}
+}
+
+function render(){
+
+  const p=document.getElementById("attendance");
+  if(!p)return;
+
+  const st=students();
+  const d=attendance();
+  const date=document.getElementById("attDate").value;
+  const cls=document.getElementById("attClass").value;
+  const search=document.getElementById("attSearch").value.toLowerCase();
+
+  const saved=d[date]||{};
+  const table=document.getElementById("attendanceTable");
+
+  let list=st.filter(s=>{
+    const name=String(s.name||s.studentName||"").toLowerCase();
+    const c=s.class||s.className||s.studentClass||"";
+    return (!cls||c===cls)&&(!search||name.includes(search));
+  });
+
+  table.innerHTML="";
+
+  list.forEach((s,i)=>{
+    const id=s.id||s.studentId||("ST"+(i+1));
+    const name=s.name||s.studentName||"Unnamed";
+    const c=s.class||s.className||s.studentClass||"-";
+    const status=saved[id]||"Present";
+
+    table.innerHTML+=`
+    <tr>
+      <td>${i+1}</td>
+      <td>${id}</td>
+      <td>${name}</td>
+      <td>${c}</td>
+      <td>
+        <select class="attStatus" data-id="${id}"
+        style="padding:8px;border:1px solid #ddd;border-radius:7px">
+          <option ${status=="Present"?"selected":""}>Present</option>
+          <option ${status=="Absent"?"selected":""}>Absent</option>
+          <option ${status=="Late"?"selected":""}>Late</option>
+        </select>
+      </td>
+    </tr>`;
+  });
+
+  counts();
+}
+
+function counts(){
+
+  let p=0,a=0,l=0;
+
+  document.querySelectorAll(".attStatus").forEach(x=>{
+    if(x.value=="Present")p++;
+    if(x.value=="Absent")a++;
+    if(x.value=="Late")l++;
+  });
+
+  document.getElementById("attPresent").textContent=p;
+  document.getElementById("attAbsent").textContent=a;
+  document.getElementById("attLate").textContent=l;
+}
+
+function build(){
+
+  const p=document.getElementById("attendance");
+  if(!p)return;
+
+  const st=students();
+
+  let classes=[...new Set(
+    st.map(s=>s.class||s.className||s.studentClass).filter(Boolean)
+  )];
+
+  p.innerHTML=`
+  <div class="page-header">
+    <div>
+      <h2>Attendance</h2>
+      <p>Track student attendance</p>
+    </div>
+  </div>
+
+  <div class="module">
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+
+      <div style="flex:1;min-width:180px">
+        <label>Date</label>
+        <input type="date" id="attDate"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+      </div>
+
+      <div style="flex:1;min-width:180px">
+        <label>Class</label>
+        <select id="attClass"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+          <option value="">All Classes</option>
+          ${classes.map(c=>`<option>${c}</option>`).join("")}
+        </select>
+      </div>
+
+      <div style="flex:1;min-width:180px">
+        <label>Search Student</label>
+        <input id="attSearch" placeholder="Search student..."
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+
+      <button class="btn-primary" onclick="HTOall('Present')">
+        ✓ All Present
+      </button>
+
+      <button class="btn-primary" onclick="HTOall('Absent')">
+        ✕ All Absent
+      </button>
+
+      <button class="btn-primary" onclick="HTOsaveAttendance()">
+        Save Attendance
+      </button>
+
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:20px">
+
+      <div class="module" style="margin:0;padding:15px;flex:1">
+        <b id="attPresent">0</b><br>Present
+      </div>
+
+      <div class="module" style="margin:0;padding:15px;flex:1">
+        <b id="attAbsent">0</b><br>Absent
+      </div>
+
+      <div class="module" style="margin:0;padding:15px;flex:1">
+        <b id="attLate">0</b><br>Late
+      </div>
+
+    </div>
+
+    <div style="overflow:auto">
+      <table class="data-table" style="width:100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Class</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="attendanceTable"></tbody>
+      </table>
+    </div>
+
+  </div>`;
+
+  document.getElementById("attDate").value=
+    new Date().toISOString().split("T")[0];
+
+  document.getElementById("attDate").onchange=render;
+  document.getElementById("attClass").onchange=render;
+  document.getElementById("attSearch").oninput=render;
+
+  render();
+}
+
+window.HTOall=function(status){
+  document.querySelectorAll(".attStatus").forEach(x=>x.value=status);
+  counts();
+};
+
+window.HTOsaveAttendance=function(){
+
+  const date=document.getElementById("attDate").value;
+  if(!date)return alert("Please select a date.");
+
+  const d=attendance();
+  if(!d[date])d[date]={};
+
+  document.querySelectorAll(".attStatus").forEach(x=>{
+    d[date][x.dataset.id]=x.value;
+  });
+
+  localStorage.setItem("HTO_attendance",JSON.stringify(d));
+
+  alert("Attendance saved successfully.");
+};
+
+window.addEventListener("load",function(){
+  setTimeout(build,100);
+});
+
+})();
+</script>
+
+<!-- ================= HTO EXAMS & RESULTS ================= -->
+<script>
+(function(){
+
+function getStudents(){
+  try{
+    return JSON.parse(localStorage.getItem("HTO_students")||"[]");
+  }catch(e){return[];}
+}
+
+function getResults(){
+  try{
+    return JSON.parse(localStorage.getItem("HTO_results")||"[]");
+  }catch(e){return[];}
+}
+
+function saveResults(data){
+  localStorage.setItem("HTO_results",JSON.stringify(data));
+}
+
+function buildExams(){
+
+  const page=document.getElementById("exams");
+  if(!page)return;
+
+  const students=getStudents();
+
+  page.innerHTML=`
+  <div class="page-header">
+    <div>
+      <h2>Exams & Results</h2>
+      <p>Manage examinations and student results</p>
+    </div>
+  </div>
+
+  <div class="module">
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+
+      <div style="flex:1;min-width:180px">
+        <label>Student</label>
+        <select id="examStudent"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+          <option value="">Select Student</option>
+          ${students.map((s,i)=>{
+            const id=s.id||s.studentId||("ST"+(i+1));
+            const name=s.name||s.studentName||"Unnamed";
+            return `<option value="${id}">${name} (${id})</option>`;
+          }).join("")}
+        </select>
+      </div>
+
+      <div style="flex:1;min-width:180px">
+        <label>Subject</label>
+        <select id="examSubject"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+          <option value="">Select Subject</option>
+          <option>Qur'an Kareem</option>
+          <option>Fiqi</option>
+          <option>Seerah</option>
+          <option>Arabic Language</option>
+          <option>Islamic Region</option>
+        </select>
+      </div>
+
+      <div style="flex:1;min-width:120px">
+        <label>Marks</label>
+        <input type="number" id="examMarks"
+        min="0" max="100" placeholder="0 - 100"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+      </div>
+
+    </div>
+
+    <button class="btn-primary" onclick="HTOaddResult()">
+      + Save Result
+    </button>
+
+  </div>
+
+  <div class="module" style="margin-top:20px">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div>
+        <h3>Results List</h3>
+        <p>Student examination results</p>
+      </div>
+
+      <input id="examSearch"
+      placeholder="Search student..."
+      style="padding:10px;border:1px solid #ddd;border-radius:8px">
+    </div>
+
+    <div style="overflow:auto;margin-top:15px">
+      <table class="data-table" style="width:100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Marks</th>
+            <th>Grade</th>
+            <th>Result</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="examResultsTable"></tbody>
+      </table>
+    </div>
+
+  </div>`;
+
+  document.getElementById("examSearch").oninput=renderResults;
+
+  renderResults();
+}
+
+function grade(mark){
+  mark=Number(mark);
+
+  if(mark>=90)return"A+";
+  if(mark>=80)return"A";
+  if(mark>=70)return"B";
+  if(mark>=60)return"C";
+  if(mark>=50)return"D";
+  return"F";
+}
+
+function renderResults(){
+
+  const table=document.getElementById("examResultsTable");
+  if(!table)return;
+
+  const search=(document.getElementById("examSearch").value||"").toLowerCase();
+  const results=getResults();
+
+  table.innerHTML="";
+
+  results.forEach((r,i)=>{
+
+    if(search &&
+       !String(r.student).toLowerCase().includes(search) &&
+       !String(r.id).toLowerCase().includes(search)){
+      return;
+    }
+
+    const g=grade(r.marks);
+    const result=Number(r.marks)>=50?"Pass":"Fail";
+
+    table.innerHTML+=`
+    <tr>
+      <td>${i+1}</td>
+      <td>${r.student}<br><small>${r.id}</small></td>
+      <td>${r.subject}</td>
+      <td>${r.marks}</td>
+      <td>${g}</td>
+      <td>${result}</td>
+      <td>
+        <button onclick="HTOdeleteResult(${i})"
+        style="border:0;background:none;cursor:pointer">
+        Delete
+        </button>
+      </td>
+    </tr>`;
+  });
+}
+
+window.HTOaddResult=function(){
+
+  const studentId=document.getElementById("examStudent").value;
+  const subject=document.getElementById("examSubject").value;
+  const marks=document.getElementById("examMarks").value;
+
+  if(!studentId||!subject||marks===""){
+    alert("Please complete all fields.");
+    return;
+  }
+
+  const students=getStudents();
+
+  const student=students.find(s=>
+    String(s.id||s.studentId)===String(studentId)
+  );
+
+  const name=student
+    ?(student.name||student.studentName||"Unnamed")
+    :"Unknown";
+
+  const results=getResults();
+
+  results.push({
+    id:studentId,
+    student:name,
+    subject:subject,
+    marks:Number(marks)
+  });
+
+  saveResults(results);
+
+  document.getElementById("examStudent").value="";
+  document.getElementById("examSubject").value="";
+  document.getElementById("examMarks").value="";
+
+  renderResults();
+
+  alert("Result saved successfully.");
+};
+
+window.HTOdeleteResult=function(index){
+
+  if(!confirm("Delete this result?"))return;
+
+  const results=getResults();
+
+  results.splice(index,1);
+
+  saveResults(results);
+
+  renderResults();
+};
+
+window.addEventListener("load",function(){
+  setTimeout(buildExams,150);
+});
+
+})();
+</script>
+
+<!-- ================= HTO STUDENT FEES WITH MONTHS ================= -->
+<script>
+(function(){
+
+function getStudents(){
+  try{
+    return JSON.parse(localStorage.getItem("HTO_students")||"[]");
+  }catch(e){return[];}
+}
+
+function getFees(){
+  try{
+    return JSON.parse(localStorage.getItem("HTO_fees")||"[]");
+  }catch(e){return[];}
+}
+
+function saveFees(data){
+  localStorage.setItem("HTO_fees",JSON.stringify(data));
+}
+
+function buildFees(){
+
+  const page=document.getElementById("fees");
+  if(!page)return;
+
+  const students=getStudents();
+
+  const months=[
+    "January","February","March","April",
+    "May","June","July","August",
+    "September","October","November","December"
+  ];
+
+  page.innerHTML=`
+  <div class="page-header">
+    <div>
+      <h2>Student Fees</h2>
+      <p>Manage monthly student fees and payments</p>
+    </div>
+  </div>
+
+  <div class="module">
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+
+      <div style="flex:1;min-width:180px">
+        <label>Student</label>
+        <select id="feeStudent"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+          <option value="">Select Student</option>
+          ${students.map((s,i)=>{
+            const id=s.id||s.studentId||("ST"+(i+1));
+            const name=s.name||s.studentName||"Unnamed";
+            return `<option value="${id}">${name} (${id})</option>`;
+          }).join("")}
+        </select>
+      </div>
+
+      <div style="flex:1;min-width:150px">
+        <label>Month</label>
+        <select id="feeMonth"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+          <option value="">Select Month</option>
+          ${months.map(m=>`<option>${m}</option>`).join("")}
+        </select>
+      </div>
+
+      <div style="flex:1;min-width:150px">
+        <label>Fee Amount</label>
+        <input type="number" id="feeAmount"
+        min="0" placeholder="Amount"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+      </div>
+
+      <div style="flex:1;min-width:150px">
+        <label>Paid Amount</label>
+        <input type="number" id="feePaid"
+        min="0" placeholder="Paid"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+      </div>
+
+      <div style="flex:1;min-width:150px">
+        <label>Date</label>
+        <input type="date" id="feeDate"
+        style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px">
+      </div>
+
+    </div>
+
+    <button class="btn-primary" onclick="HTOsaveFee()">
+      + Save Monthly Fee
+    </button>
+
+  </div>
+
+  <div class="module" style="margin-top:20px">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+
+      <div>
+        <h3>Monthly Fee Records</h3>
+        <p>View student payments by month</p>
+      </div>
+
+      <input id="feeSearch"
+      placeholder="Search student..."
+      style="padding:10px;border:1px solid #ddd;border-radius:8px">
+
+    </div>
+
+    <div style="overflow:auto;margin-top:15px">
+
+      <table class="data-table" style="width:100%">
+
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>Month</th>
+            <th>Fee</th>
+            <th>Paid</th>
+            <th>Balance</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="feesTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>`;
+
+  document.getElementById("feeDate").value=
+    new Date().toISOString().split("T")[0];
+
+  document.getElementById("feeSearch").oninput=renderFees;
+
+  renderFees();
+}
+
+function renderFees(){
+
+  const table=document.getElementById("feesTable");
+  if(!table)return;
+
+  const search=
+    (document.getElementById("feeSearch").value||"").toLowerCase();
+
+  const fees=getFees();
+
+  table.innerHTML="";
+
+  fees.forEach((f,i)=>{
+
+    if(search &&
+       !String(f.student).toLowerCase().includes(search) &&
+       !String(f.id).toLowerCase().includes(search)){
+      return;
+    }
+
+    const balance=
+      Number(f.amount)-Number(f.paid);
+
+    const status=
+      balance<=0 ? "Paid" : "Pending";
+
+    table.innerHTML+=`
+    <tr>
+
+      <td>${i+1}</td>
+
+      <td>
+        ${f.student}<br>
+        <small>${f.id}</small>
+      </td>
+
+      <td>${f.month||"-"}</td>
+
+      <td>$${Number(f.amount).toFixed(2)}</td>
+
+      <td>$${Number(f.paid).toFixed(2)}</td>
+
+      <td>$${balance.toFixed(2)}</td>
+
+      <td>${f.date}</td>
+
+      <td>${status}</td>
+
+      <td>
+        <button
+        onclick="HTOdeleteFee(${i})"
+        style="border:0;background:none;cursor:pointer">
+        Delete
+        </button>
+      </td>
+
+    </tr>`;
+  });
+}
+
+window.HTOsaveFee=function(){
+
+  const studentId=
+    document.getElementById("feeStudent").value;
+
+  const month=
+    document.getElementById("feeMonth").value;
+
+  const amount=
+    document.getElementById("feeAmount").value;
+
+  const paid=
+    document.getElementById("feePaid").value;
+
+  const date=
+    document.getElementById("feeDate").value;
+
+  if(!studentId||!month||amount===""||paid===""||!date){
+
+    alert("Please complete all fields.");
+
+    return;
+  }
+
+  if(Number(paid)>Number(amount)){
+
+    alert("Paid amount cannot be greater than the fee amount.");
+
+    return;
+  }
+
+  const students=getStudents();
+
+  const student=students.find(s=>
+    String(s.id||s.studentId)===String(studentId)
+  );
+
+  const name=student
+    ?(student.name||student.studentName||"Unnamed")
+    :"Unknown";
+
+  const fees=getFees();
+
+  fees.push({
+
+    id:studentId,
+
+    student:name,
+
+    month:month,
+
+    amount:Number(amount),
+
+    paid:Number(paid),
+
+    date:date
+
+  });
+
+  saveFees(fees);
+
+  document.getElementById("feeStudent").value="";
+  document.getElementById("feeMonth").value="";
+  document.getElementById("feeAmount").value="";
+  document.getElementById("feePaid").value="";
+
+  renderFees();
+
+  alert("Monthly fee saved successfully.");
+};
+
+window.HTOdeleteFee=function(index){
+
+  if(!confirm("Delete this fee record?"))return;
+
+  const fees=getFees();
+
+  fees.splice(index,1);
+
+  saveFees(fees);
+
+  renderFees();
+};
+
+window.addEventListener("load",function(){
+
+  setTimeout(buildFees,200);
+
+});
+
+})();
+</script>
+
+<!-- ================= HTO PAYROLL - TEACHERS + EMPLOYEES ================= -->
+<script>
+(function(){
+
+/* ================= GET TEACHERS ================= */
+
+function getTeachers(){
+  try{
+    return JSON.parse(
+      localStorage.getItem("HTO_teachers_final") ||
+      localStorage.getItem("HTO_teachers") ||
+      "[]"
+    );
+  }catch(e){
+    return [];
+  }
+}
+
+
+/* ================= GET EMPLOYEES ================= */
+
+function getEmployees(){
+  try{
+    return JSON.parse(
+      localStorage.getItem("HTO_employees") || "[]"
+    );
+  }catch(e){
+    return [];
+  }
+}
+
+
+/* ================= GET PAYROLL ================= */
+
+function getPayroll(){
+  try{
+    return JSON.parse(
+      localStorage.getItem("HTO_payroll") || "[]"
+    );
+  }catch(e){
+    return [];
+  }
+}
+
+
+/* ================= SAVE PAYROLL ================= */
+
+function savePayroll(data){
+  localStorage.setItem(
+    "HTO_payroll",
+    JSON.stringify(data)
+  );
+}
+
+
+/* ================= GET ALL PEOPLE ================= */
+
+function getPeople(){
+
+  const people = [];
+
+  /* ---------- TEACHERS ---------- */
+
+  const teachers = getTeachers();
+
+  teachers.forEach(function(teacher,index){
+
+    const id =
+      teacher.id ||
+      teacher.teacherId ||
+      ("TCH"+(index+1));
+
+    const name =
+      teacher.name ||
+      teacher.teacherName ||
+      "Unnamed Teacher";
+
+    people.push({
+      id:String(id),
+      name:String(name),
+      type:"Teacher"
+    });
+
+  });
+
+
+  /* ---------- EMPLOYEES ---------- */
+
+  const employees = getEmployees();
+
+  employees.forEach(function(employee,index){
+
+    const id =
+      employee.id ||
+      employee.employeeId ||
+      ("EMP"+(index+1));
+
+    const name =
+      employee.name ||
+      employee.employeeName ||
+      "Unnamed Employee";
+
+    people.push({
+      id:String(id),
+      name:String(name),
+      type:"Employee"
+    });
+
+  });
+
+
+  return people;
+}
+
+
+/* ================= BUILD PAYROLL ================= */
+
+function buildPayroll(){
+
+  const page =
+    document.getElementById("payroll");
+
+  if(!page)return;
+
+
+  const people =
+    getPeople();
+
+
+  const months = [
+
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+
+  ];
+
+
+  page.innerHTML = `
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>Payroll</h2>
+
+      <p>
+        Manage teacher and employee salaries
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RECORD SALARY ================= -->
+
+  <div class="module">
+
+    <h3 style="margin-top:0;">
+      Record Salary
+    </h3>
+
+
+    <div style="
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    ">
+
+
+      <!-- TEACHER / EMPLOYEE -->
+
+      <div style="
+        flex:1;
+        min-width:220px;
+      ">
+
+        <label>
+          Teacher / Employee
+        </label>
+
+
+        <select
+          id="payPerson"
+          style="
+            width:100%;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            box-sizing:border-box;
+          "
+        >
+
+          <option value="">
+            Select Teacher or Employee
+          </option>
+
+
+          ${
+            people.length
+
+            ? people.map(function(person){
+
+                return `
+
+                <option value="${person.id}">
+
+                  ${person.name}
+                  — ${person.type}
+                  (${person.id})
+
+                </option>
+
+                `;
+
+              }).join("")
+
+            : `
+
+              <option value="">
+                No teachers or employees found
+              </option>
+
+            `
+          }
+
+        </select>
+
+      </div>
+
+
+      <!-- MONTH -->
+
+      <div style="
+        flex:1;
+        min-width:150px;
+      ">
+
+        <label>
+          Month
+        </label>
+
+
+        <select
+          id="payMonth"
+          style="
+            width:100%;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            box-sizing:border-box;
+          "
+        >
+
+          <option value="">
+            Select Month
+          </option>
+
+
+          ${
+            months.map(function(month){
+
+              return `
+              <option value="${month}">
+                ${month}
+              </option>
+              `;
+
+            }).join("")
+          }
+
+        </select>
+
+      </div>
+
+
+      <!-- SALARY -->
+
+      <div style="
+        flex:1;
+        min-width:150px;
+      ">
+
+        <label>
+          Salary
+        </label>
+
+
+        <input
+          type="number"
+          id="paySalary"
+          min="0"
+          placeholder="Salary amount"
+          style="
+            width:100%;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            box-sizing:border-box;
+          "
+        >
+
+      </div>
+
+
+      <!-- PAYMENT DATE -->
+
+      <div style="
+        flex:1;
+        min-width:150px;
+      ">
+
+        <label>
+          Payment Date
+        </label>
+
+
+        <input
+          type="date"
+          id="payDate"
+          style="
+            width:100%;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            box-sizing:border-box;
+          "
+        >
+
+      </div>
+
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div style="
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    ">
+
+
+      <button
+        class="btn-primary"
+        onclick="HTOsavePayroll('Paid')"
+      >
+
+        ✓ Mark as Paid
+
+      </button>
+
+
+      <button
+        class="btn-primary"
+        onclick="HTOsavePayroll('Not Paid')"
+      >
+
+        Save as Not Paid
+
+      </button>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SALARY RECORDS ================= -->
+
+  <div
+    class="module"
+    style="margin-top:20px;"
+  >
+
+
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    ">
+
+
+      <div>
+
+        <h3>
+          Salary Records
+        </h3>
+
+        <p>
+          Teacher and employee salary records
+        </p>
+
+      </div>
+
+
+      <input
+        id="paySearch"
+        type="text"
+        placeholder="Search name or ID..."
+        style="
+          padding:10px;
+          border:1px solid #ddd;
+          border-radius:8px;
+        "
+      >
+
+
+    </div>
+
+
+    <div style="
+      overflow:auto;
+      margin-top:15px;
+    ">
+
+
+      <table
+        class="data-table"
+        style="width:100%;"
+      >
+
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>Name</th>
+
+            <th>Type</th>
+
+            <th>Month</th>
+
+            <th>Salary</th>
+
+            <th>Payment Date</th>
+
+            <th>Status</th>
+
+            <th>Action</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+          id="payrollTable"
+        ></tbody>
+
+
+      </table>
+
+
+    </div>
+
+
+  </div>
+
+  `;
+
+
+  /* DEFAULT DATE */
+
+  document.getElementById("payDate").value =
+    new Date()
+    .toISOString()
+    .split("T")[0];
+
+
+  /* SEARCH */
+
+  document.getElementById("paySearch").oninput =
+    renderPayroll;
+
+
+  renderPayroll();
+
+}
+
+
+/* ================= RENDER PAYROLL ================= */
+
+function renderPayroll(){
+
+  const table =
+    document.getElementById("payrollTable");
+
+  if(!table)return;
+
+
+  const search =
+    (
+      document.getElementById("paySearch").value ||
+      ""
+    )
+    .toLowerCase()
+    .trim();
+
+
+  const records =
+    getPayroll();
+
+
+  table.innerHTML = "";
+
+
+  records.forEach(function(record,index){
+
+    const name =
+      String(record.name || "")
+      .toLowerCase();
+
+
+    const id =
+      String(record.id || "")
+      .toLowerCase();
+
+
+    if(
+      search &&
+      !name.includes(search) &&
+      !id.includes(search)
+    ){
+      return;
+    }
+
+
+    table.innerHTML += `
+
+      <tr>
+
+        <td>
+          ${index+1}
+        </td>
+
+
+        <td>
+
+          <strong>
+            ${record.name || "-"}
+          </strong>
+
+          <br>
+
+          <small>
+            ${record.id || "-"}
+          </small>
+
+        </td>
+
+
+        <td>
+          ${record.type || "-"}
+        </td>
+
+
+        <td>
+          ${record.month || "-"}
+        </td>
+
+
+        <td>
+          $${Number(record.salary || 0).toFixed(2)}
+        </td>
+
+
+        <td>
+          ${record.date || "-"}
+        </td>
+
+
+        <td>
+          ${record.status || "-"}
+        </td>
+
+
+        <td>
+
+          <button
+            onclick="HTOdeletePayroll(${index})"
+            style="
+              border:0;
+              background:none;
+              cursor:pointer;
+            "
+          >
+
+            Delete
+
+          </button>
+
+        </td>
+
+
+      </tr>
+
+    `;
+
+  });
+
+}
+
+
+/* ================= SAVE PAYROLL ================= */
+
+window.HTOsavePayroll =
+function(status){
+
+  const personId =
+    document.getElementById("payPerson").value;
+
+
+  const month =
+    document.getElementById("payMonth").value;
+
+
+  const salary =
+    document.getElementById("paySalary").value;
+
+
+  const date =
+    document.getElementById("payDate").value;
+
+
+  if(
+    !personId ||
+    !month ||
+    salary === "" ||
+    !date
+  ){
+
+    alert(
+      "Please complete all fields."
+    );
+
+    return;
+  }
+
+
+  if(Number(salary) < 0){
+
+    alert(
+      "Salary cannot be negative."
+    );
+
+    return;
+  }
+
+
+  const people =
+    getPeople();
+
+
+  const person =
+    people.find(function(p){
+
+      return String(p.id) ===
+             String(personId);
+
+    });
+
+
+  if(!person){
+
+    alert(
+      "Teacher or Employee not found."
+    );
+
+    return;
+  }
+
+
+  const payroll =
+    getPayroll();
+
+
+  payroll.push({
+
+    id:person.id,
+
+    name:person.name,
+
+    type:person.type,
+
+    month:month,
+
+    salary:Number(salary),
+
+    date:date,
+
+    status:status
+
+  });
+
+
+  savePayroll(payroll);
+
+
+  /* CLEAR FORM */
+
+  document.getElementById(
+    "payPerson"
+  ).value = "";
+
+
+  document.getElementById(
+    "payMonth"
+  ).value = "";
+
+
+  document.getElementById(
+    "paySalary"
+  ).value = "";
+
+
+  renderPayroll();
+
+
+  alert(
+
+    status === "Paid"
+
+      ? "Salary marked as Paid successfully."
+
+      : "Salary saved as Not Paid."
+
+  );
+
+};
+
+
+/* ================= DELETE PAYROLL ================= */
+
+window.HTOdeletePayroll =
+function(index){
+
+  if(
+    !confirm(
+      "Delete this salary record?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const payroll =
+    getPayroll();
+
+
+  payroll.splice(
+    index,
+    1
+  );
+
+
+  savePayroll(payroll);
+
+
+  renderPayroll();
+
+};
+
+
+/* ================= OPEN PAYROLL ================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    setTimeout(
+      buildPayroll,
+      300
+    );
+
+  }
+);
+
+
+/* ================= REFRESH ================= */
+
+window.HTOrefreshPayroll =
+function(){
+
+  buildPayroll();
+
+};
+
+
+})();
+</script>
+
+<!-- HTO PAYMENTS + EXPENSES -->
+<script>
+(function(){
+  function data(key){
+    try { return JSON.parse(localStorage.getItem(key) || "[]"); }
+    catch(e) { return []; }
+  }
+
+  function refreshPayments(){
+    var fees=data("HTO_fees");
+    var expenses=data("HTO_expenses");
+    var paid=fees.reduce(function(t,f){ return t+Number(f.paid || 0); },0);
+    var spent=expenses.reduce(function(t,e){ return t+Number(e.amount || 0); },0);
+
+    var p=document.getElementById("htoPaymentTotal");
+    var x=document.getElementById("htoExpenseTotal");
+    var b=document.getElementById("htoPaymentBalance");
+    if(p) p.textContent="$"+paid.toFixed(2);
+    if(x) x.textContent="$"+spent.toFixed(2);
+    if(b) b.textContent="$"+(paid-spent).toFixed(2);
+
+    var box=document.getElementById("simpleExpenses");
+    if(!box) return;
+    if(!expenses.length){ box.innerHTML='<p style="color:#777;">No expenses recorded.</p>'; return; }
+    box.innerHTML='<table class="data-table" style="width:100%"><thead><tr><th>#</th><th>Expense</th><th>Amount</th><th>Date</th><th>Delete</th></tr></thead><tbody>'+
+      expenses.map(function(e,i){
+        return '<tr><td>'+(i+1)+'</td><td>'+String(e.name || '')+'</td><td>$'+Number(e.amount || 0).toFixed(2)+'</td><td>'+String(e.date || '')+'</td><td><button onclick="deleteExpense('+i+')">Delete</button></td></tr>';
+      }).join('')+
+      '</tbody></table><h3 style="margin-top:15px">Total Expenses: $'+spent.toFixed(2)+'</h3>';
+  }
+
+  window.addSimpleExpense=function(){
+    var name=prompt("Expense name:");
+    if(!name) return;
+    var amount=prompt("Expense amount:");
+    if(!amount || isNaN(Number(amount))) return;
+    var expenses=data("HTO_expenses");
+    expenses.push({name:name,amount:Number(amount),date:new Date().toISOString().split("T")[0]});
+    localStorage.setItem("HTO_expenses",JSON.stringify(expenses));
+    refreshPayments();
+  };
+
+  window.deleteExpense=function(i){
+    var expenses=data("HTO_expenses");
+    expenses.splice(i,1);
+    localStorage.setItem("HTO_expenses",JSON.stringify(expenses));
+    refreshPayments();
+  };
+
+  window.addEventListener("load",function(){ setTimeout(refreshPayments,300); });
+  window.addEventListener("storage",refreshPayments);
+  setInterval(refreshPayments,1000);
+})();
+</script>
+
+<!-- HTO DASHBOARD FINANCIAL SUMMARY -->
+<script>
+(function(){
+
+function updateDashboardFinance(){
+
+  const fees = JSON.parse(
+    localStorage.getItem("HTO_fees") || "[]"
+  );
+
+  const expenses = JSON.parse(
+    localStorage.getItem("HTO_expenses") || "[]"
+  );
+
+  let payments = 0;
+  let totalExpenses = 0;
+
+  fees.forEach(function(f){
+    payments += Number(f.paid || 0);
+  });
+
+  expenses.forEach(function(e){
+    totalExpenses += Number(e.amount || 0);
+  });
+
+  const net = payments - totalExpenses;
+
+  const dashboard = document.getElementById("dashboard");
+  if(!dashboard) return;
+
+  let box = document.getElementById("htoDashboardFinance");
+
+  if(!box){
+
+    box = document.createElement("div");
+    box.id = "htoDashboardFinance";
+
+    box.style.cssText = `
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:15px;
+    `;
+
+    dashboard.appendChild(box);
+  }
+
+  box.innerHTML = `
+    <div style="
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      border:1px solid #ddd;
+    ">
+      <div style="color:#666">Student Payments</div>
+      <h2 style="margin:8px 0">$${payments.toFixed(2)}</h2>
+    </div>
+
+    <div style="
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      border:1px solid #ddd;
+    ">
+      <div style="color:#666">Total Expenses</div>
+      <h2 style="margin:8px 0">$${totalExpenses.toFixed(2)}</h2>
+    </div>
+
+    <div style="
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      border:1px solid #ddd;
+    ">
+      <div style="color:#666">Net Balance</div>
+      <h2 style="margin:8px 0">$${net.toFixed(2)}</h2>
+    </div>
+  `;
+}
+
+window.addEventListener("load",function(){
+  setTimeout(updateDashboardFinance,1000);
+});
+
+setInterval(updateDashboardFinance,1000);
+
+})();
+</script>
+
+<!-- ================= HTO REPORTS SUMMARY ================= -->
+<script>
+(function(){
+
+function getData(key){
+  try{
+    return JSON.parse(localStorage.getItem(key)||"[]");
+  }catch(e){
+    return [];
+  }
+}
+
+function updateReports(){
+
+  const page=document.getElementById("reports");
+  if(!page)return;
+
+  const students=getData("HTO_students");
+  const fees=getData("HTO_fees");
+  const expenses=getData("HTO_expenses");
+
+  let totalPaid=0;
+  let totalExpenses=0;
+
+  fees.forEach(function(f){
+    totalPaid += Number(f.paid||0);
+  });
+
+  expenses.forEach(function(e){
+    totalExpenses += Number(e.amount||0);
+  });
+
+  const netBalance=totalPaid-totalExpenses;
+
+  let box=document.getElementById("htoReportsSummary");
+
+  if(!box){
+
+    box=document.createElement("div");
+    box.id="htoReportsSummary";
+
+    box.style.cssText=`
+      margin-top:20px;
+    `;
+
+    page.appendChild(box);
+  }
+
+  box.innerHTML=`
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+      gap:15px;
+    ">
+
+      <div style="
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        border:1px solid #ddd;
+      ">
+        <div style="color:#666">Total Students</div>
+        <h2 style="margin:8px 0">${students.length}</h2>
+      </div>
+
+      <div style="
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        border:1px solid #ddd;
+      ">
+        <div style="color:#666">Student Payments</div>
+        <h2 style="margin:8px 0">
+          $${totalPaid.toFixed(2)}
+        </h2>
+      </div>
+
+      <div style="
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        border:1px solid #ddd;
+      ">
+        <div style="color:#666">Total Expenses</div>
+        <h2 style="margin:8px 0">
+          $${totalExpenses.toFixed(2)}
+        </h2>
+      </div>
+
+      <div style="
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        border:1px solid #ddd;
+      ">
+        <div style="color:#666">Net Balance</div>
+        <h2 style="margin:8px 0">
+          $${netBalance.toFixed(2)}
+        </h2>
+      </div>
+
+    </div>
+
+    <div style="
+      background:white;
+      margin-top:20px;
+      padding:20px;
+      border-radius:10px;
+      border:1px solid #ddd;
+    ">
+
+      <h3>Financial Summary</h3>
+
+      <table class="data-table" style="width:100%;margin-top:15px">
+
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Student Payments</td>
+            <td>$${totalPaid.toFixed(2)}</td>
+          </tr>
+
+          <tr>
+            <td>Total Expenses</td>
+            <td>$${totalExpenses.toFixed(2)}</td>
+          </tr>
+
+          <tr>
+            <td><b>Net Balance</b></td>
+            <td><b>$${netBalance.toFixed(2)}</b></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+  `;
+}
+
+/* Refresh Reports automatically */
+setInterval(updateReports,1000);
+
+window.addEventListener("load",function(){
+  setTimeout(updateReports,1000);
+});
+
+})();
+</script>
+
+<!-- HTO MONTHLY REPORT -->
+<script>
+(function(){
+
+function getData(key){
+  try{
+    return JSON.parse(localStorage.getItem(key)||"[]");
+  }catch(e){
+    return [];
+  }
+}
+
+function monthlyReport(){
+
+  const page=document.getElementById("reports");
+  if(!page)return;
+
+  if(document.getElementById("htoMonthlyReport"))return;
+
+  const box=document.createElement("div");
+
+  box.id="htoMonthlyReport";
+
+  box.style.cssText=`
+    margin-top:20px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid #ddd;
+  `;
+
+  box.innerHTML=`
+
+    <h3>Monthly Report</h3>
+
+    <div style="
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:15px;
+    ">
+
+      <select id="reportMonth"
+        style="
+          padding:12px;
+          border:1px solid #ddd;
+          border-radius:8px;
+        ">
+
+        <option value="">Select Month</option>
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+        <option>June</option>
+        <option>July</option>
+        <option>August</option>
+        <option>September</option>
+        <option>October</option>
+        <option>November</option>
+        <option>December</option>
+
+      </select>
+
+      <button class="btn-primary"
+        onclick="HTOviewMonthlyReport()">
+        View Report
+      </button>
+
+    </div>
+
+    <div id="monthlyReportResult"
+      style="margin-top:20px">
+    </div>
+  `;
+
+  page.appendChild(box);
+}
+
+
+window.HTOviewMonthlyReport=function(){
+
+  const month=document.getElementById("reportMonth").value;
+
+  if(!month){
+    alert("Please select a month.");
+    return;
+  }
+
+  const fees=getData("HTO_fees");
+  const expenses=getData("HTO_expenses");
+
+  let paid=0;
+  let expense=0;
+
+  fees.forEach(function(f){
+
+    if(f.month===month){
+      paid+=Number(f.paid||0);
+    }
+
+  });
+
+  expenses.forEach(function(e){
+
+    const d=new Date(e.date);
+
+    if(
+      d.toLocaleString("en-US",{month:"long"})===month
+    ){
+      expense+=Number(e.amount||0);
+    }
+
+  });
+
+  const net=paid-expense;
+
+  document.getElementById("monthlyReportResult").innerHTML=`
+
+    <div style="
+      padding:20px;
+      border:1px solid #ddd;
+      border-radius:8px;
+    ">
+
+      <h3>${month} Report</h3>
+
+      <p>
+        Student Payments:
+        <b>$${paid.toFixed(2)}</b>
+      </p>
+
+      <p>
+        Total Expenses:
+        <b>$${expense.toFixed(2)}</b>
+      </p>
+
+      <p>
+        Net Balance:
+        <b>$${net.toFixed(2)}</b>
+      </p>
+
+    </div>
+
+  `;
+};
+
+
+window.addEventListener("load",function(){
+  setTimeout(monthlyReport,1200);
+});
+
+})();
+</script>
+
+<script>
+function HTOPrint(){
+  var p=document.querySelector('.page.active');
+  if(!p){ window.print(); return; }
+
+  var old=document.body.innerHTML;
+  document.body.innerHTML=p.innerHTML;
+
+  window.print();
+
+  document.body.innerHTML=old;
+  location.reload();
+}
+</script>
+
+<!-- HTO SETTINGS ADD-ON -->
+<style>
+#settings .hto-settings-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+#settings .hto-setting-box{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:20px;
+}
+#settings .hto-setting-box h3{
+  margin-top:0;
+  margin-bottom:15px;
+}
+#settings .hto-setting-box input,
+#settings .hto-setting-box select{
+  width:100%;
+  box-sizing:border-box;
+  padding:11px;
+  margin:6px 0 12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+#settings .hto-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+#settings .hto-info{
+  line-height:1.8;
+}
+</style>
+
+<script>
+(function(){
+
+function HTOloadSettings(){
+
+  var old=document.getElementById("htoSettingsContent");
+  if(old) old.remove();
+
+  var page=document.getElementById("settings");
+  if(!page) return;
+
+  var saved={};
+  try{
+    saved=JSON.parse(localStorage.getItem("HTO_settings")||"{}");
+  }catch(e){}
+
+  var box=document.createElement("div");
+  box.id="htoSettingsContent";
+
+  box.innerHTML=`
+    <div class="hto-settings-grid">
+
+      <div class="hto-setting-box">
+        <h3>🏫 College Information</h3>
+
+        <label>College Name</label>
+        <input id="htoCollegeName" value="${saved.name||"HOME TEACHING ONLINE"}">
+
+        <label>Tagline</label>
+        <input id="htoTagline" value="${saved.tagline||"Center of learning Qur'an and shareca of Islam."}">
+
+        <label>Phone</label>
+        <input id="htoPhone" value="${saved.phone||""}">
+
+        <label>Email</label>
+        <input id="htoEmail" value="${saved.email||""}">
+
+        <label>Address</label>
+        <input id="htoAddress" value="${saved.address||"Hargeisa, Somaliland"}">
+      </div>
+
+      <div class="hto-setting-box">
+        <h3>📚 Academic Settings</h3>
+
+        <label>Academic Year</label>
+        <input id="htoYear" value="${saved.year||"2026"}">
+
+        <label>Current Batch</label>
+        <input id="htoBatch" value="${saved.batch||""}">
+
+        <label>Currency</label>
+        <select id="htoCurrency">
+          <option value="USD" ${(saved.currency||"USD")==="USD"?"selected":""}>USD ($)</option>
+          <option value="SOS" ${saved.currency==="SOS"?"selected":""}>SOS</option>
+        </select>
+      </div>
+
+      <div class="hto-setting-box">
+        <h3>⚙ System Preferences</h3>
+
+        <label>Date Format</label>
+        <select id="htoDateFormat">
+          <option value="DD/MM/YYYY" ${(saved.dateFormat||"DD/MM/YYYY")==="DD/MM/YYYY"?"selected":""}>DD/MM/YYYY</option>
+          <option value="MM/DD/YYYY" ${saved.dateFormat==="MM/DD/YYYY"?"selected":""}>MM/DD/YYYY</option>
+          <option value="YYYY-MM-DD" ${saved.dateFormat==="YYYY-MM-DD"?"selected":""}>YYYY-MM-DD</option>
+        </select>
+
+        <div class="hto-actions">
+          <button class="btn-primary" type="button" onclick="HTOSaveSettings()">
+            💾 Save Settings
+          </button>
+        </div>
+      </div>
+
+      <div class="hto-setting-box">
+        <h3>💾 Data Management</h3>
+
+        <p>Backup your college data before making major changes.</p>
+
+        <div class="hto-actions">
+          <button class="btn-primary" type="button" onclick="HTOBackupData()">
+            📥 Backup Data
+          </button>
+
+          <button type="button" onclick="HTOResetSettings()">
+            Reset Settings
+          </button>
+        </div>
+      </div>
+
+      <div class="hto-setting-box">
+        <h3>ℹ System Information</h3>
+
+        <div class="hto-info">
+          <b>HOME TEACHING ONLINE</b><br>
+          Online College Management System<br>
+          Version: 1.0<br>
+          Founded: 2024
+        </div>
+      </div>
+
+    </div>
+  `;
+
+  page.appendChild(box);
+}
+
+window.HTOSaveSettings=function(){
+
+  var data={
+    name:document.getElementById("htoCollegeName").value,
+    tagline:document.getElementById("htoTagline").value,
+    phone:document.getElementById("htoPhone").value,
+    email:document.getElementById("htoEmail").value,
+    address:document.getElementById("htoAddress").value,
+    year:document.getElementById("htoYear").value,
+    batch:document.getElementById("htoBatch").value,
+    currency:document.getElementById("htoCurrency").value,
+    dateFormat:document.getElementById("htoDateFormat").value
+  };
+
+  localStorage.setItem("HTO_settings",JSON.stringify(data));
+
+  alert("Settings saved successfully.");
+};
+
+window.HTOBackupData=function(){
+
+  var data={};
+
+  for(var i=0;i<localStorage.length;i++){
+    var key=localStorage.key(i);
+    data[key]=localStorage.getItem(key);
+  }
+
+  var blob=new Blob(
+    [JSON.stringify(data,null,2)],
+    {type:"application/json"}
+  );
+
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="HTO_Backup.json";
+  a.click();
+
+  URL.revokeObjectURL(a.href);
+};
+
+window.HTOResetSettings=function(){
+
+  if(!confirm("Reset Settings only? College data will NOT be deleted.")) return;
+
+  localStorage.removeItem("HTO_settings");
+  HTOloadSettings();
+
+  alert("Settings reset successfully.");
+};
+
+window.addEventListener("load",function(){
+  setTimeout(HTOloadSettings,300);
+});
+
+})();
+</script>
+
+<script>
+function updateDashboardTotals(){
+
+    const students =
+        JSON.parse(localStorage.getItem("HTO_students") || "[]");
+
+    const teachers =
+        JSON.parse(
+            localStorage.getItem("HTO_teachers_final") ||
+            localStorage.getItem("HTO_teachers") ||
+            "[]"
+        );
+
+    const employees =
+        JSON.parse(localStorage.getItem("HTO_employees") || "[]");
+
+    const courses =
+        JSON.parse(localStorage.getItem("HTO_courses") || "[]");
+
+    document.getElementById("dashboardStudents").textContent = students.length;
+    document.getElementById("dashboardTeachers").textContent = teachers.length;
+    document.getElementById("dashboardEmployees").textContent = employees.length;
+    document.getElementById("dashboardCourses").textContent = courses.length;
+}
+
+document.addEventListener("DOMContentLoaded", updateDashboardTotals);
+</script>
+<script>
+function adminLogin() {
+    const password = document.getElementById("adminPassword").value;
+
+    if (password === "8845788@Moh") {
+        document.getElementById("adminLogin").style.display = "none";
+        sessionStorage.setItem("HTO_Admin_Login", "true");
+    } else {
+        document.getElementById("loginError").textContent =
+            "Wrong password!";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (sessionStorage.getItem("HTO_Admin_Login") === "true") {
+        document.getElementById("adminLogin").style.display = "none";
+    }
+});
+</script>
+
+<script>
+/* ===== HTO ADMIN LOGOUT ===== */
+
+function adminLogout() {
+    sessionStorage.removeItem("HTO_Admin_Login");
+    location.reload();
+}
+
+/* Create Logout button automatically */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sidebar = document.getElementById("sidebar");
+
+    if (!sidebar) return;
+
+    const logoutBtn = document.createElement("button");
+
+    logoutBtn.className = "nav";
+    logoutBtn.innerHTML = " &nbsp; Logout";
+    logoutBtn.onclick = adminLogout;
+
+    sidebar.appendChild(logoutBtn);
+});
+</script>
+
+<script>
+function changeAdminPassword() {
+
+    const oldPassword = prompt("Enter current password:");
+    if (oldPassword === null) return;
+
+    const savedPassword =
+        localStorage.getItem("HTO_Admin_Password") || "8845788@Moh";
+
+    if (oldPassword !== savedPassword) {
+        alert("Wrong current password!");
+        return;
+    }
+
+    const newPassword = prompt("Enter new password:");
+    if (!newPassword) {
+        alert("New password cannot be empty!");
+        return;
+    }
+
+    const confirmPassword = prompt("Confirm new password:");
+
+    if (newPassword !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    localStorage.setItem("HTO_Admin_Password", newPassword);
+
+    alert("Admin password changed successfully!");
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const settingsBtn = [...document.querySelectorAll(".nav")]
+        .find(btn => btn.textContent.includes("Settings"));
+
+    if (!settingsBtn) return;
+
+    const changeBtn = document.createElement("button");
+
+    changeBtn.className = "nav";
+    changeBtn.innerHTML = " &nbsp; Change Password";
+    changeBtn.onclick = changeAdminPassword;
+
+    settingsBtn.parentNode.insertBefore(
+        changeBtn,
+        settingsBtn.nextSibling
+    );
+});
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+}
+</script>
+</body>
+</html>
